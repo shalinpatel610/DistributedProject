@@ -26,4 +26,4 @@ Logs/*
 hs_err_pid*
 /bin/
 
-*.DS_Store
+.DS_Store
