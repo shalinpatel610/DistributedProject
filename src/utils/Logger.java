@@ -53,7 +53,7 @@ public class Logger {
 				
 				String folder = "../Logs/Instance1/ClientLogs/";
 				
-				if(Cache.getInstance().getClientType() == Cache.ClientType.ADVISOR) folder += "Advisor/";
+				if(Cache.getInstance().getClientType() == Cache.ClientType.MANAGER) folder += "Advisor/";
 				else folder += "Student/";
 				
 				File logFile = new File(folder + Cache.getInstance().id + ".txt");

@@ -107,7 +107,7 @@ public abstract class IDEMSPOA extends org.omg.PortableServer.Servant
          String neweventId = in.read_string ();
          String oldeventId = in.read_string ();
          org.omg.CORBA.Any $result = null;
-         $result = this.swapEvent (customerId, neweventId, oldeventId);
+         $result = this.swapEvent (customerId, neweventId, oldeventId, newEventType, oldEventType));
          out = $rh.createReply();
          out.write_any ($result);
          break;
