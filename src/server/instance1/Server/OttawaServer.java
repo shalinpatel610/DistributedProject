@@ -1,23 +1,23 @@
-package server.instance4.Server;
+package server.instance1.Server;
 
-import server.instance4.InterfaceImplementation.TorontoInterface;
+import server.instance1.InterfaceImplementation.OttawaInterface;
 
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 
-public class TorontoServer {
+public class OttawaServer {
 
-    public static TorontoInterface torontoInterface;
+    public static OttawaInterface ottawaInterface;
 
     public static void main(String[] args) throws Exception {
 
         try {
-            System.out.println("Toronto Server Started...");
-            torontoInterface = new TorontoInterface();
+            System.out.println("Ottawa Server Started...");
+            ottawaInterface = new OttawaInterface();
 
-            System.out.println("Toronto Server ready and waiting ...");
+            System.out.println("Ottawa Server ready and waiting ...");
             Runnable task = () -> {
-                receive(torontoInterface);
+                receive(ottawaInterface);
             };
             Thread thread = new Thread(task);
             thread.start();
@@ -29,16 +29,16 @@ public class TorontoServer {
             e.printStackTrace(System.out);
         }
 
-        System.out.println("Toronto Server Exiting ...");
+        System.out.println("Ottawa Server Exiting ...");
     }
 
-    public static void receive(TorontoInterface obj) {
+    public static void receive(OttawaInterface obj) {
         DatagramSocket aSocket = null;
         String sendingResult = "";
         try {
-            aSocket = new DatagramSocket(5002);
+            aSocket = new DatagramSocket(2001);
             byte[] buffer = new byte[1000];
-            System.out.println("Toronto Server Started - 5002");
+            System.out.println("Ottawa Server Started - 2001");
             while (true) {
                 DatagramPacket request = new DatagramPacket(buffer, buffer.length);
                 aSocket.receive(request);
@@ -53,7 +53,7 @@ public class TorontoServer {
                     boolean result = obj.book(customerID, eventID, eventType);
                     sendingResult = Boolean.toString(result);
                     sendingResult= sendingResult+";";
-                }else if (function.equals("cancel")){
+                } else if (function.equals("cancel")){
                     boolean result = obj.cancel(customerID, eventID, eventType);
                     sendingResult = Boolean.toString(result);
                     sendingResult= sendingResult+";";
@@ -80,7 +80,6 @@ public class TorontoServer {
                 aSocket.send(reply);
             }
         } catch (Exception e) {
-            e.printStackTrace();
             System.out.println("Socket: " + e.getMessage());
         } finally {
             if (aSocket != null)

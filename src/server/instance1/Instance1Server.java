@@ -1,27 +1,36 @@
 package server.instance1;
 
-import server.instance1.controller.socket.UDPServer;
-import utils.Logger;
+import server.instance1.InterfaceImplementation.MontrealInterface;
+import server.instance1.InterfaceImplementation.OttawaInterface;
+import server.instance1.InterfaceImplementation.TorontoInterface;
+import server.instance1.Server.MontrealServer;
+import server.instance1.Server.OttawaServer;
+import server.instance1.Server.TorontoServer;
 
-public class Instance1Server{
+public class Instance1Server {
 
-	public static void main(String[] args) throws Exception {
-					
-		Logger.isServer = true;
-		
-	    UDPServer compUDPServer = new UDPServer("COMP");
-	    compUDPServer.setName("COMP");
-	    compUDPServer.start();
-	    
-	    UDPServer soenUDPServer = new UDPServer("SOEN");
-	    soenUDPServer.setName("SOEN");
-	    soenUDPServer.start();
-	    
-	    UDPServer inseUDPServer = new UDPServer("INSE");
-	    inseUDPServer.setName("INSE");
-	    inseUDPServer.start();
-		
-		System.out.println("Insance 1 Server initated");
-	}
+    public static MontrealInterface montrealInterface;
+    public static OttawaInterface ottawaInterface;
+    public static TorontoInterface torontoInterface;
+
+    public static void main(String[] args) {
+
+        try {
+
+            MontrealServer.main(null);
+            OttawaServer.main(null);
+            TorontoServer.main(null);
+
+            //new Thread(() -> { (new MontrealServer()).receive(montrealInterface); }).start();
+            //new Thread(() -> { (new OttawaServer()).receive(ottawaInterface); }).start();
+            //new Thread(() -> { (new TorontoServer()).receive(torontoInterface); }).start();
+
+            System.out.println("Insance 4 Server initated");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
 
 }

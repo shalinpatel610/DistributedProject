@@ -1,6 +1,6 @@
-package server.instance4.Server;
+package server.instance1.Server;
 
-import server.instance4.InterfaceImplementation.TorontoInterface;
+import server.instance1.InterfaceImplementation.TorontoInterface;
 
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -36,9 +36,9 @@ public class TorontoServer {
         DatagramSocket aSocket = null;
         String sendingResult = "";
         try {
-            aSocket = new DatagramSocket(5002);
+            aSocket = new DatagramSocket(2002);
             byte[] buffer = new byte[1000];
-            System.out.println("Toronto Server Started - 5002");
+            System.out.println("Toronto Server Started - 2002");
             while (true) {
                 DatagramPacket request = new DatagramPacket(buffer, buffer.length);
                 aSocket.receive(request);

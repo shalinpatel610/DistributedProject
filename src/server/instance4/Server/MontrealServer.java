@@ -36,9 +36,9 @@ public class MontrealServer {
         DatagramSocket aSocket = null;
         String sendingResult = "";
         try {
-            aSocket = new DatagramSocket(8002);
+            aSocket = new DatagramSocket(5000);
             byte[] buffer = new byte[1000];
-            System.out.println("Montreal Server Started");
+            System.out.println("Montreal Server Started - 5000");
             while (true) {
                 DatagramPacket request = new DatagramPacket(buffer, buffer.length);
                 aSocket.receive(request);
