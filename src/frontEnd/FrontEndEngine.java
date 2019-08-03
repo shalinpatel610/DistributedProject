@@ -9,9 +9,9 @@ import java.util.AbstractMap.SimpleEntry;
 import org.omg.CORBA.Any;
 import org.omg.CORBA.ORB;
 
-import utils.corbaInterface.IDCRSPOA;
+import utils.corbaInterface.IDEMSPOA;
 
-public class FrontEndEngine extends IDCRSPOA {
+public class FrontEndEngine extends IDEMSPOA {
 	
 	private ORB orb;
 	private String server;
@@ -30,14 +30,14 @@ public class FrontEndEngine extends IDCRSPOA {
 	}
 
 	@Override
-	public boolean addCourse(String advisorId, String courseId, String semester, int capacity) {
+	public boolean addEvent(String managerId, String eventId, String eventType, int capacity) {
 		
 		StringJoiner joiner = new StringJoiner("&")
 				.add(server)
-				.add("addCourse")
-				.add(advisorId)
-				.add(courseId)
-				.add(semester)
+				.add("addEvent")
+				.add(managerId)
+				.add(eventId)
+				.add(eventType)
 				.add(String.valueOf(capacity));
 		
 		String message = joiner.toString();		
@@ -47,14 +47,14 @@ public class FrontEndEngine extends IDCRSPOA {
 	}
 
 	@Override
-	public boolean removeCourse(String advisorId, String courseId, String semester) {
+	public boolean removeEvent(String managerId, String eventId, String eventType) {
 
 		StringJoiner joiner = new StringJoiner("&")
 				.add(server)
-				.add("removeCourse")
-				.add(advisorId)
-				.add(courseId)
-				.add(semester);
+				.add("removeEvent")
+				.add(managerId)
+				.add(eventId)
+				.add(eventType);
 		
 		String message = joiner.toString();		
 		Object result = FrontEndUtitlies.sendUDPRequest(message);
@@ -63,13 +63,13 @@ public class FrontEndEngine extends IDCRSPOA {
 	}
 
 	@Override
-	public Any listCourseAvailability(String advisorId, String semester) {
+	public Any listEventAvailability(String managerId, String eventType) {
 
 		StringJoiner joiner = new StringJoiner("&")
 				.add(server)
-				.add("listCourseAvailability")
-				.add(advisorId)
-				.add(semester);
+				.add("listEventAvailability")
+				.add(managerId)
+				.add(eventType);
 		
 		String message = joiner.toString();		
 		HashMap<String, Integer> result = (HashMap<String, Integer>) FrontEndUtitlies.sendUDPRequest(message); 
@@ -80,14 +80,14 @@ public class FrontEndEngine extends IDCRSPOA {
 	}
 
 	@Override
-	public Any enrolCourse(String studentId, String courseId, String semester) {
+	public Any bookEvent(String customerId, String eventId, String eventType) {
 		
 		StringJoiner joiner = new StringJoiner("&")
 				.add(server)
-				.add("enrolCourse")
-				.add(studentId)
-				.add(courseId)
-				.add(semester);
+				.add("bookEvent")
+				.add(customerId)
+				.add(eventId)
+				.add(eventType);
 		
 		String message = joiner.toString();		
 		SimpleEntry<Boolean, String> result = (SimpleEntry<Boolean, String>) FrontEndUtitlies.sendUDPRequest(message);
@@ -98,12 +98,12 @@ public class FrontEndEngine extends IDCRSPOA {
 	}
 
 	@Override
-	public Any getClassSchedule(String studentId) {
+	public Any getBookingSchedule(String customerId) {
 
 		StringJoiner joiner = new StringJoiner("&")
 				.add(server)
-				.add("getClassSchedule")
-				.add(studentId);
+				.add("getBookingSchedule")
+				.add(customerId);
 		
 		String message = joiner.toString();		
 		HashMap<String, ArrayList<String>> result = (HashMap<String, ArrayList<String>>) FrontEndUtitlies.sendUDPRequest(message);
@@ -114,13 +114,13 @@ public class FrontEndEngine extends IDCRSPOA {
 	}
 
 	@Override
-	public boolean dropCourse(String studentId, String courseId) {
+	public boolean cancelEvent(String customerId, String eventId) {
 		
 		StringJoiner joiner = new StringJoiner("&")
 				.add(server)
-				.add("dropCourse")
-				.add(studentId)
-				.add(courseId);
+				.add("cancelEvent")
+				.add(customerId)
+				.add(eventId);
 		
 		String message = joiner.toString();		
 		Object result = FrontEndUtitlies.sendUDPRequest(message);
@@ -129,14 +129,16 @@ public class FrontEndEngine extends IDCRSPOA {
 	}
 
 	@Override
-	public Any swapCourse(String studentId, String newCourseId, String oldCourseId) {
+	public Any swapEvent(String customerId, String neweventId, String oldeventId, String newEventType, String oldEventType) {
 
 		StringJoiner joiner = new StringJoiner("&")
 				.add(server)
-				.add("swapCourse")
-				.add(studentId)
-				.add(newCourseId)
-				.add(oldCourseId);
+				.add("swapEvent")
+				.add(customerId)
+				.add(neweventId)
+				.add(oldeventId)
+				.add(newEventType)
+				.add(oldEventType);
 		
 		String message = joiner.toString();		
 		SimpleEntry<Boolean, String> result = (SimpleEntry<Boolean, String>) FrontEndUtitlies.sendUDPRequest(message);
