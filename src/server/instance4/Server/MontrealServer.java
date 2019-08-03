@@ -44,7 +44,7 @@ public class MontrealServer {
                 aSocket.receive(request);
                 String sentence = new String( request.getData(), 0,
                         request.getLength() );
-                String[] parts = sentence.split(";");
+                String[] parts = sentence.split("&");
                 String function = parts[0];
                 String customerID = parts[1];
                 String eventID = parts[2];
@@ -52,27 +52,27 @@ public class MontrealServer {
                 if (function.equals("book")){
                     boolean result = obj.book(customerID, eventID, eventType);
                     sendingResult = Boolean.toString(result);
-                    sendingResult= sendingResult+";";
+                    sendingResult= sendingResult+"&";
                 } else if (function.equals("cancel")){
                     boolean result = obj.cancel(customerID, eventID, eventType);
                     sendingResult = Boolean.toString(result);
-                    sendingResult= sendingResult+";";
+                    sendingResult= sendingResult+"&";
                 } else if (function.equals("schedule")){
                     String result = obj.schedule(customerID);
                     sendingResult = result;
-                    sendingResult= sendingResult+";";
+                    sendingResult= sendingResult+"&";
                 } else if (function.equals("availability")){
                     String result = obj.availability(eventType);
                     sendingResult = result;
-                    sendingResult= sendingResult+";";
+                    sendingResult= sendingResult+"&";
                 } else if (function.equals("availabilityCount")){
                     String result = obj.countAvailability(eventType, eventID);
                     sendingResult = result;
-                    sendingResult= sendingResult+";";
+                    sendingResult= sendingResult+"&";
                 } else if (function.equals("count")){
                     int result = obj.count(customerID, eventID);
                     sendingResult = String.valueOf(result);
-                    sendingResult= sendingResult+";";
+                    sendingResult= sendingResult+"&";
                 }
                 byte[] sendData = sendingResult.getBytes();
                 DatagramPacket reply = new DatagramPacket(sendData, sendingResult.length(), request.getAddress(),

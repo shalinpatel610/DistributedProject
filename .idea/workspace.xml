@@ -2,23 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0c11d6b2-d5ec-4e44-84bc-96838d38a3a9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/server/instance2/logging/MyFormatter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/instance2/logging/MyLogger.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/instance2/remoteObject/EnrollmentImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/instance2/remoteObject/EnrollmentInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/instance2/util/City.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/instance2/util/EventType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/instance2/util/Role.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/instance2/util/Utils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/instance2/Instance2Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/instance2/Instance2Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/instance2/controller/DCRS.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/instance2/controller/udp/UDPClient.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/instance2/controller/udp/UDPServer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/instance2/logging/LogManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/Logger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/Logger.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/corbaInterface/IDEMSOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/corbaInterface/IDEMSOperations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/corbaInterface/IDEMSPOA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/corbaInterface/IDEMSPOA.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontEnd/FrontEndEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontEnd/FrontEndEngine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/instance1/InterfaceImplementation/MontrealInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/instance1/InterfaceImplementation/MontrealInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/instance1/InterfaceImplementation/OttawaInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/instance1/InterfaceImplementation/OttawaInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/instance1/InterfaceImplementation/TorontoInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/instance1/InterfaceImplementation/TorontoInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/instance1/Server/MontrealServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/instance1/Server/MontrealServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/instance1/Server/OttawaServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/instance1/Server/OttawaServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/instance1/Server/TorontoServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/instance1/Server/TorontoServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/instance4/InterfaceImplementation/MontrealInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/instance4/InterfaceImplementation/MontrealInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/instance4/InterfaceImplementation/OttawaInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/instance4/InterfaceImplementation/OttawaInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/instance4/InterfaceImplementation/TorontoInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/instance4/InterfaceImplementation/TorontoInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/instance4/Server/MontrealServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/instance4/Server/MontrealServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/instance4/Server/OttawaServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/instance4/Server/OttawaServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/instance4/Server/TorontoServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/instance4/Server/TorontoServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/MultiThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/MultiThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/Logger.java" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -68,7 +67,20 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Instance4Server">
+  <component name="RunManager" selected="Application.Client">
+    <configuration name="Client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="client.Client" />
+      <module name="DistributedProject" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="client.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Instance4Server" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="server.instance4.Instance4Server" />
       <module name="DistributedProject" />
@@ -157,6 +169,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Client" />
         <item itemvalue="Application.Instance4Server" />
         <item itemvalue="Application.Sequencer" />
         <item itemvalue="Application.ReplicaManager" />

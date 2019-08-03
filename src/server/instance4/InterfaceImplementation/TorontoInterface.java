@@ -314,7 +314,7 @@ public class TorontoInterface{
     private static String connectServer(int serverPort, String function, String customerID, String eventID, String eventType){
         DatagramSocket aSocket = null;
         String result ="";
-        String dataFromClient = function+";"+customerID+";"+eventID+";"+eventType;
+        String dataFromClient = function+"&"+customerID+"&"+eventID+"&"+eventType;
         try {
             aSocket = new DatagramSocket();
             byte[] message = dataFromClient.getBytes();
@@ -327,7 +327,7 @@ public class TorontoInterface{
 
             aSocket.receive(reply);
             result = new String(reply.getData());
-            String[] parts = result.split(";");
+            String[] parts = result.split("&");
             result = parts[0];
         } catch (Exception e) {
             //System.out.println("Socket: " + e.getMessage());
