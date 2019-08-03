@@ -2,7 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0c11d6b2-d5ec-4e44-84bc-96838d38a3a9" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/server/instance2/logging/MyFormatter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/server/instance2/logging/MyLogger.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/server/instance2/remoteObject/EnrollmentImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/server/instance2/remoteObject/EnrollmentInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/server/instance2/util/City.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/server/instance2/util/EventType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/server/instance2/util/Role.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/server/instance2/util/Utils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/instance2/Instance2Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/instance2/Instance2Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/instance2/controller/DCRS.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/instance2/controller/udp/UDPClient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/instance2/controller/udp/UDPServer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/instance2/logging/LogManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/Logger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/Logger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/corbaInterface/IDEMSOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/corbaInterface/IDEMSOperations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/corbaInterface/IDEMSPOA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/corbaInterface/IDEMSPOA.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

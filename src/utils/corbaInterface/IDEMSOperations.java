@@ -13,6 +13,6 @@ public interface IDEMSOperations
   /* Student Operations */
   org.omg.CORBA.Any bookEvent (String customerId, String eventId, String eventType);
   org.omg.CORBA.Any getBookingSchedule (String customerId);
-  boolean cancelEvent (String customerId, String eventId);
+  boolean cancelEvent (String customerId, String eventId, String eventType);
   org.omg.CORBA.Any swapEvent (String customerId, String neweventId, String oldeventId, String newEventType, String oldEventType);
 } // interface IDEMSOperations
