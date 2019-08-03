@@ -80,9 +80,9 @@ public class Controller {
 		int maxCapacity = new Scanner(System.in).nextInt();
 		
 		if(Cache.getInstance().dems.addEvent(Cache.getInstance().id, eventId, eventType, maxCapacity))
-			Logger.addCourse_Successfull(eventId, eventType, Cache.getInstance().id);
+			Logger.addEvent_Successful(eventId, eventType, Cache.getInstance().id);
 		else
-			Logger.addCourse_Failed(eventId, eventType, Cache.getInstance().id);
+			Logger.addEvent_Failed(eventId, eventType, Cache.getInstance().id);
 		
 	}
 
@@ -95,9 +95,9 @@ public class Controller {
 		if(eventId == null) return;
 		
 		if(Cache.getInstance().dems.removeEvent(Cache.getInstance().id, eventId, semester))
-			Logger.removeCourse_Successfull(eventId, semester, Cache.getInstance().id);
+			Logger.removeEvent_Successful(eventId, semester, Cache.getInstance().id);
 		else
-			Logger.removeCourse_Failed(eventId, semester, Cache.getInstance().id);
+			Logger.removeEvent_Failed(eventId, semester, Cache.getInstance().id);
 	}
 
 	public static void listEventAvailability() {
@@ -108,7 +108,7 @@ public class Controller {
 		Any any = Cache.getInstance().dems.listEventAvailability(Cache.getInstance().id, eventType);
 		HashMap<String, Integer> events = (HashMap<String, Integer>) any.extract_Value();
 		
-		Logger.listAvailableCourses(Cache.getInstance().id, eventType, events);
+		Logger.listAvailableEvents(Cache.getInstance().id, eventType, events);
 	}	
 	
 	public static void bookEvent() {
@@ -128,7 +128,7 @@ public class Controller {
 		
 		Any any = Cache.getInstance().dems.bookEvent(studentId, eventId, eventType);
 		SimpleEntry<Boolean, String> result = (SimpleEntry<Boolean, String>) any.extract_Value();
-		Logger.enrolCourse(studentId, eventId, eventType, result.getKey(), result.getValue().replaceAll("_", " "));
+		Logger.bookEvent(studentId, eventId, eventType, result.getKey(), result.getValue().replaceAll("_", " "));
 		
 	}
 	
@@ -148,7 +148,7 @@ public class Controller {
 		}
 
 		boolean result = Cache.getInstance().dems.cancelEvent(customerId, eventId, eventType);
-		Logger.dropCourse(customerId, eventId, result);
+		Logger.cancelEvent(customerId, eventId, result);
 	}
 
 	public static void getBookingSchedule() {
@@ -163,7 +163,7 @@ public class Controller {
 		Any any = Cache.getInstance().dems.getBookingSchedule(customerId);
 		HashMap<String, ArrayList<String>> result = (HashMap<String, ArrayList<String>>) any.extract_Value();
 		
-		Logger.getClassSchedule(customerId, result);
+		Logger.getBookingSchedule(customerId, result);
 		
 	}
 
@@ -193,7 +193,7 @@ public class Controller {
 		Any any = Cache.getInstance().dems.swapEvent(customerId, newEventId, oldEventId, newEventType, oldEventType);
 		SimpleEntry<Boolean, String> result = (SimpleEntry<Boolean, String>) any.extract_Value();
 		
-		Logger.swapCourse(customerId, newEventId, oldEventId, result);
+		Logger.swapEvent(customerId, newEventId, oldEventId, result);
 		
 	}
 
