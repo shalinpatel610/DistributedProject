@@ -94,6 +94,7 @@ public abstract class IDEMSPOA extends org.omg.PortableServer.Servant
        {
          String customerId = in.read_string ();
          String eventId = in.read_string ();
+         String eventType = in.read_string();
          boolean $result = false;
          $result = this.cancelEvent (customerId, eventId, eventType);
          out = $rh.createReply();
@@ -103,11 +104,13 @@ public abstract class IDEMSPOA extends org.omg.PortableServer.Servant
 
        case 6:  
        {
-         String customerId = in.read_string ();
-         String neweventId = in.read_string ();
-         String oldeventId = in.read_string ();
+         String customerId = in.read_string();
+         String neweventId = in.read_string();
+         String oldeventId = in.read_string();
+         String newEventType = in.read_string();
+         String oldEventType = in.read_string();
          org.omg.CORBA.Any $result = null;
-         $result = this.swapEvent (customerId, neweventId, oldeventId, newEventType, oldEventType));
+         $result = this.swapEvent(customerId, neweventId, oldeventId, newEventType, oldEventType);
          out = $rh.createReply();
          out.write_any ($result);
          break;

@@ -113,13 +113,14 @@ public class _IDEMSStub extends org.omg.CORBA.portable.ObjectImpl implements uti
             }
   } // getBookingSchedule
 
-  public boolean cancelEvent (String customerId, String eventId)
+  public boolean cancelEvent (String customerId, String eventId, String eventType)
   {
             org.omg.CORBA.portable.InputStream $in = null;
             try {
                 org.omg.CORBA.portable.OutputStream $out = _request ("cancelEvent", true);
                 $out.write_string (customerId);
                 $out.write_string (eventId);
+                $out.write_string(eventType);
                 $in = _invoke ($out);
                 boolean $result = $in.read_boolean ();
                 return $result;
@@ -128,7 +129,7 @@ public class _IDEMSStub extends org.omg.CORBA.portable.ObjectImpl implements uti
                 String _id = $ex.getId ();
                 throw new org.omg.CORBA.MARSHAL (_id);
             } catch (org.omg.CORBA.portable.RemarshalException $rm) {
-                return cancelEvent (customerId, eventId        );
+                return cancelEvent (customerId, eventId, eventType);
             } finally {
                 _releaseReply ($in);
             }
