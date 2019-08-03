@@ -1,9 +1,3 @@
-/*
-* COMP6231 - Distributed Systems | Fall2018
-* Final Project 
-* Professor - Rajagopalan Jayakumar
-* Software Failure Tolerant and Highly Available Distributed Course Registration System (DCRS)
-*/
 package utils;
 
 import java.util.HashMap;
@@ -12,10 +6,7 @@ import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
-/**
- * @author Amandeep Singh
- * @see <a href='https://www.linkedin.com/in/imamanrana/' target="_blank">Profile</a>
- */
+
 public class Utility {
 
 	
@@ -29,17 +20,17 @@ public class Utility {
 	}
 
 	/**
-	 * @param deptDatabase
+	 * @param cityDatabase
 	 * @return
 	 */
-	public static byte[] deepCopyInstance3State(HashMap<String, HashMap<String, HashMap<String, Object>>> deptDatabase) {
+	public static byte[] deepCopyInstance3State(HashMap<String, HashMap<String, HashMap<String, Object>>> cityDatabase) {
 		
 		
 		Map<String, HashMap<String, HashMap<String, Object>>> copy = new HashMap<>();
 		HashMap<String,HashMap<String,Object>> newValue1 = new HashMap<>();
 		
-		for(String key1 : deptDatabase.keySet()) {
-			HashMap<String,HashMap<String,Object>> value1 = deptDatabase.get(key1);
+		for(String key1 : cityDatabase.keySet()) {
+			HashMap<String,HashMap<String,Object>> value1 = cityDatabase.get(key1);
 			for(String key2 : value1.keySet()) {
 				
 				HashMap<String,Object> value2 = value1.get(key2);
@@ -63,11 +54,11 @@ public class Utility {
 	
 
 	/**
-	 * @param deptDatabase
+	 * @param cityDatabase
 	 * @return
 	 */
-	public static byte[] deepCopyInstance4State(HashMap<String, HashMap<String, HashMap<String, Object>>> deptDatabase) {
-		return deepCopyInstance3State(deptDatabase);
+	public static byte[] deepCopyInstance4State(HashMap<String, HashMap<String, HashMap<String, Object>>> cityDatabase) {
+		return deepCopyInstance3State(cityDatabase);
 	}
 	
 	

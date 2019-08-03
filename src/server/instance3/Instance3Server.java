@@ -1,9 +1,3 @@
-/*
-* COMP6231 - Distributed Systems | Fall2018
-* Final Project 
-* Professor - Rajagopalan Jayakumar
-* Software Failure Tolerant and Highly Available Distributed Course Registration System (DCRS)
-*/
 package server.instance3;
 
 import java.io.IOException;
@@ -13,11 +7,6 @@ import server.instance3.remoteObject.EnrollmentInterface;
 import server.instance3.util.Department;
 import utils.Config;
 
-/**
- * @author Amandeep Singh
- * @see <a href='https://www.linkedin.com/in/imamanrana/' target=
- *      "_blank">Profile</a>
- */
 public class Instance3Server {
 
 	private static EnrollmentInterface compServer;

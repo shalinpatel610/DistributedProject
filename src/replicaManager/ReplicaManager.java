@@ -1,9 +1,3 @@
-/*
-* COMP6231 - Distributed Systems | Fall2018
-* Final Project 
-* Professor - Rajagopalan Jayakumar
-* Software Failure Tolerant and Highly Available Distributed Course Registration System (DCRS)
-*/
 package replicaManager;
 
 import java.io.File;
@@ -14,10 +8,6 @@ import server.instance3.logging.MyLogger;
 import utils.Config;
 import utils.Constants;
 
-/**
- * @author Amandeep Singh
- * @see <a href='https://www.linkedin.com/in/imamanrana/' target="_blank">Profile</a>
- */
 public class ReplicaManager {
 	
 	public static void main(String[] args) {
