@@ -1,15 +1,15 @@
 package client.controller.data;
 
-import utils.corbaInterface.IDCRS;
+import utils.corbaInterface.IDEMS;
 
 public class Cache {
 
 	private static Cache instance = null;
 	
-	public IDCRS dcrs;
+	public IDEMS dems;
 	public String id;
 	public enum ClientType {
-		STUDENT, ADVISOR
+		CLIENT, MANAGER
 	}
 	
 	public static Cache getInstance() {
@@ -20,34 +20,34 @@ public class Cache {
 		return instance;
 	}
 	
-	public String getDepartment() {
-		return id.substring(0, 4);
+	public String getProvince() {
+		return id.substring(0, 3);
 	}
 
 	public ClientType getClientType() {
 		
-		if(id.substring(4, 5).equals("A")) 
-			return ClientType.ADVISOR;		
-		else if(id.substring(4, 5).equals("S")) 
-			return ClientType.STUDENT;
+		if(id.substring(3, 4).equals("M"))
+			return ClientType.MANAGER;
+		else if(id.substring(3, 4).equals("C"))
+			return ClientType.CLIENT;
 		
 		return null;
 	}
 
 	public boolean checkValidId() {
 		
-		String department = this.getDepartment();
+		String province = this.getProvince();
 		
-		if( !(department.equals("COMP") || department.equals("SOEN") || department.equals("INSE"))){
-			System.out.println("Invalid Student id (Department)");
+		if( !(province.equals("MTL") || province.equals("TOR") || province.equals("OTW"))){
+			System.out.println("Invalid User id");
 			return false;
 			
 		} else if(this.getClientType() == null) {
-			System.out.println("Invalid Student id (Client Type)");
+			System.out.println("Invalid User id");
 			return false;
 			
-		} else if(id.length() != 9) {
-			System.out.println("Invalid Student id (Number)");
+		} else if(id.length() != 8) {
+			System.out.println("Invalid User id");
 			return false;
 		}
 			

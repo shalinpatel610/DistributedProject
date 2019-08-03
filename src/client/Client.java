@@ -11,8 +11,8 @@ import org.omg.CosNaming.NamingContextPackage.NotFound;
 
 import client.controller.Controller;
 import client.controller.data.Cache;
-import utils.corbaInterface.IDCRS;
-import utils.corbaInterface.IDCRSHelper;
+import utils.corbaInterface.IDEMS;
+import utils.corbaInterface.IDEMSHelper;
 
 public class Client {	
 
@@ -20,7 +20,7 @@ public class Client {
 		
 		Cache cache = Cache.getInstance();
 		
-		System.out.print("Enter Student/Adivsor Id: ");
+		System.out.print("Enter Customer/Manager Id: ");
 		cache.id = new Scanner(System.in).nextLine().toUpperCase();
 		
 		if(!cache.checkValidId())
@@ -29,7 +29,7 @@ public class Client {
 		ORB orb = ORB.init(args, null);
 	    org.omg.CORBA.Object objRef =   orb.resolve_initial_references("NameService");
 	    NamingContextExt ncRef = NamingContextExtHelper.narrow(objRef);
-	    cache.dcrs = (IDCRS) IDCRSHelper.narrow(ncRef.resolve_str(cache.getDepartment()));
+	    cache.dems = (IDEMS) IDEMSHelper.narrow(ncRef.resolve_str(cache.getProvince()));
 		
 		promptUserAction();
 		
@@ -43,23 +43,23 @@ public class Client {
 		
 		do {
 			
-			if(cache.getClientType() == Cache.ClientType.ADVISOR) {
-				System.out.println("1. Add Course");
-				System.out.println("2. Remove Course");
-				System.out.println("3. List Courses Availability");								
+			if(cache.getClientType() == Cache.ClientType.MANAGER) {
+				System.out.println("1. Add EVENT");
+				System.out.println("2. Remove EVENT");
+				System.out.println("3. List EVENT Availability");
 				
 				System.out.println("\nStudent Actions");
-				System.out.println("4. Enroll Course to a student");
-				System.out.println("5. Get Class Schedule");
-				System.out.println("6. Drop Course");
-				System.out.println("7. Swap Course");
+				System.out.println("4. Book an EVENT");
+				System.out.println("5. Get EVENT Schedule");
+				System.out.println("6. Cancel an EVENT");
+				System.out.println("7. Swap EVENT");
 			}
 			
-			else {			
-				System.out.println("1. Enroll Course");
-				System.out.println("2. Drop Course");
-				System.out.println("3. Get Class Schedule");
-				System.out.println("4. Swap Course");				
+			else {
+				System.out.println("4. Book an EVENT");
+				System.out.println("5. Get EVENT Schedule");
+				System.out.println("6. Cancel an EVENT");
+				System.out.println("7. Swap EVENT");
 			}
 			
 			System.out.println("8. Exit");
@@ -79,38 +79,34 @@ public class Client {
 		switch(action) {
 		
 			case 1:
-				if(cache.getClientType() == Cache.ClientType.ADVISOR) Controller.addCourse();
-				else Controller.enrollCourse();
+				Controller.addEvent();
 				break;
 			
 			case 2:	
-				if(cache.getClientType() == Cache.ClientType.ADVISOR) Controller.removeCourse();
-				else Controller.dropCourse();
+				Controller.removeEvent();
 				break;
 				
 			case 3:
-				if(cache.getClientType() == Cache.ClientType.ADVISOR) Controller.listCourseAvailable();
-				else Controller.getClassSchedule();
+				Controller.listEventAvailability();
 				break;
 				
 			case 4:
-				if(cache.getClientType() == Cache.ClientType.ADVISOR) Controller.enrollCourse();
-				else Controller.swapCourse();
+				Controller.bookEvent();
 				break;
 				
 			case 5:
-				if(cache.getClientType() == Cache.ClientType.ADVISOR) Controller.getClassSchedule();
+				Controller.getBookingSchedule();
 				break;
-				
+
 			case 6:
-				if(cache.getClientType() == Cache.ClientType.ADVISOR) Controller.dropCourse();
+				Controller.cancelEvent();
 				break;
-				
+
 			case 7:
-				if(cache.getClientType() == Cache.ClientType.ADVISOR) Controller.swapCourse();
+				Controller.swapEvent();
 				break;
 		}
-		
+
 	}
 
 }
