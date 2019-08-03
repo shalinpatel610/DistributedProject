@@ -149,11 +149,11 @@ public class ReplicaManagerEngine implements Runnable {
 		List<byte[]> state = new ArrayList<>();
 		state.add(Utility.deepCopyQueue(requestQueue));
 		state.add(UDPUtilities.udpCommunication(Config.getStringConfig("INSTANCE" + instance + "_IP"),
-				Config.getConfig("INSTANCE" + instance + "_COMP_PORT"), null, Constants.OP_GETSTATE, 0));
+				Config.getConfig("INSTANCE" + instance + "_MTL_PORT"), null, Constants.OP_GETSTATE, 0));
 		state.add(UDPUtilities.udpCommunication(Config.getStringConfig("INSTANCE" + instance + "_IP"),
-				Config.getConfig("INSTANCE" + instance + "_SOEN_PORT"), null, Constants.OP_GETSTATE, 0));
+				Config.getConfig("INSTANCE" + instance + "_TOR_PORT"), null, Constants.OP_GETSTATE, 0));
 		state.add(UDPUtilities.udpCommunication(Config.getStringConfig("INSTANCE" + instance + "_IP"),
-				Config.getConfig("INSTANCE" + instance + "_INSE_PORT"), null, Constants.OP_GETSTATE, 0));
+				Config.getConfig("INSTANCE" + instance + "_OTW_PORT"), null, Constants.OP_GETSTATE, 0));
 		return UDPUtilities.objectToByteArray(state);
 	}
 
@@ -209,11 +209,11 @@ public class ReplicaManagerEngine implements Runnable {
 		byte[] reply;
 
 		reply = UDPUtilities.udpCommunication(Config.getStringConfig("INSTANCE" + instanceNo + "_IP"),
-				Config.getConfig("INSTANCE" + instanceNo + "_COMP_PORT"), null, Constants.OP_ISALIVE, 1000); // TODO
+				Config.getConfig("INSTANCE" + instanceNo + "_MTL_PORT"), null, Constants.OP_ISALIVE, 1000); // TODO
 																												// change
 																												// timeout
 
-		LOGGER.info("MAKING ISALIVE REQUEST : " + Config.getConfig("INSTANCE" + instanceNo + "_COMP_PORT") + " REPLY -"
+		LOGGER.info("MAKING ISALIVE REQUEST : " + Config.getConfig("INSTANCE" + instanceNo + "_MTL_PORT") + " REPLY -"
 				+ reply);
 
 		if (reply == null)
@@ -269,13 +269,13 @@ public class ReplicaManagerEngine implements Runnable {
 			System.out.println("Setting state to instance : "+instance);
 			
 			UDPUtilities.udpCommunication(Config.getStringConfig("INSTANCE" + instance + "_IP"),
-					Config.getConfig("INSTANCE" + instance + "_COMP_PORT"),
+					Config.getConfig("INSTANCE" + instance + "_MTL_PORT"),
 					UDPUtilities.byteArrayToObject(state.get(1)), Constants.OP_SETSTATE, 1000);
 			UDPUtilities.udpCommunication(Config.getStringConfig("INSTANCE" + instance + "_IP"),
-					Config.getConfig("INSTANCE" + instance + "_SOEN_PORT"),
+					Config.getConfig("INSTANCE" + instance + "_TOR_PORT"),
 					UDPUtilities.byteArrayToObject(state.get(2)), Constants.OP_SETSTATE, 1000);
 			UDPUtilities.udpCommunication(Config.getStringConfig("INSTANCE" + instance + "_IP"),
-					Config.getConfig("INSTANCE" + instance + "_INSE_PORT"),
+					Config.getConfig("INSTANCE" + instance + "_OTW_PORT"),
 					UDPUtilities.byteArrayToObject(state.get(3)), Constants.OP_SETSTATE, 1000);
 		}
 
