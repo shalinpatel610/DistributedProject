@@ -1,45 +1,36 @@
 package server.instance4;
 
-import java.io.File;
-import java.io.IOException;
-
-import server.instance4.logging.CustomLogger;
-import utils.Constants;
-import server.instance4.service.DCRS;
+import server.instance4.InterfaceImplementation.MontrealInterface;
+import server.instance4.InterfaceImplementation.OttawaInterface;
+import server.instance4.InterfaceImplementation.TorontoInterface;
+import server.instance4.Server.MontrealServer;
+import server.instance4.Server.OttawaServer;
+import server.instance4.Server.TorontoServer;
 
 public class Instance4Server {
 
-	public static void main(String[] args) {
+    public static MontrealInterface montrealInterface;
+    public static OttawaInterface ottawaInterface;
+    public static TorontoInterface torontoInterface;
 
-		try {
-			
-			setupLogging("COMPServer");			
-			setupLogging("SOENServer");
-			setupLogging("INSEServer");
-			
-			new Thread(() -> { (new DCRS(Constants.COMP)).udpServer(); }).start();
-			new Thread(() -> { (new DCRS(Constants.SOEN)).udpServer(); }).start();
-			new Thread(() -> { (new DCRS(Constants.INSE)).udpServer(); }).start();
+    public static void main(String[] args) {
 
-			System.out.println("Insance 4 Server initated");
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+        try {
 
-	}
+            MontrealServer.main(null);
+            OttawaServer.main(null);
+            TorontoServer.main(null);
 
-	private static void setupLogging(String serverName) throws IOException {
+            //new Thread(() -> { (new MontrealServer()).receive(montrealInterface); }).start();
+            //new Thread(() -> { (new OttawaServer()).receive(ottawaInterface); }).start();
+            //new Thread(() -> { (new TorontoServer()).receive(torontoInterface); }).start();
 
-		File files = new File(String.format(Constants.SERVER_LOG_DIRECTORY,"Instance4"));
-		if (!files.exists())
-			files.mkdirs();
+            System.out.println("Insance 4 Server initated");
 
-		files = new File(String.format(Constants.SERVER_LOG_DIRECTORY,"Instance4") + serverName+".log");
-		if (!files.exists())
-			files.createNewFile();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-		CustomLogger.setUpLogger(files.getAbsolutePath());
-	}
+    }
 
 }
