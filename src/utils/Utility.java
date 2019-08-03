@@ -36,12 +36,12 @@ public class Utility {
 				HashMap<String,Object> value2 = value1.get(key2);
 				HashMap<String,Object> newValue2 = new HashMap<>();
 				newValue2.put(Constants.CAPACITY, value2.get(Constants.CAPACITY));
-				newValue2.put(Constants.STUDENTS_ENROLLED, value2.get(Constants.STUDENTS_ENROLLED));
+				newValue2.put(Constants.CUSTOMERS_ENROLLED, value2.get(Constants.CUSTOMERS_ENROLLED));
 				HashSet<String> set = new HashSet<>();
-				for(String value : (HashSet<String>)value2.get(Constants.STUDENT_IDS)) {
+				for(String value : (HashSet<String>)value2.get(Constants.CUSTOMER_IDS)) {
 					set.add(new String(value));
 				}
-				newValue2.put(Constants.STUDENT_IDS,set);
+				newValue2.put(Constants.CUSTOMER_IDS,set);
 				newValue1.put(new String(key2), newValue2);
 			}
 			copy.put(new String(key1), newValue1);

@@ -1,9 +1,3 @@
-/*
-* COMP6231 - Distributed Systems | Fall2018
-* Final Project 
-* Professor - Rajagopalan Jayakumar
-* Software Failure Tolerant and Highly Available Distributed Course Registration System (DCRS)
-*/
 package server.instance3.util;
 
 import java.io.ByteArrayInputStream;
@@ -13,44 +7,26 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.AbstractMap.SimpleEntry;
 
-/**
- * Utility class
- * 
- * @author Amandeep Singh
- * @see <a href="www.linkedin.com/in/imamanrana" target="_blank">Profile</a>
- *
- */
 public class Utils {
 
-	/**
-	 * Validates a User
-	 * 
-	 * @param id
-	 * @param userRole
-	 * @param department
-	 * @return
-	 */
-	public static SimpleEntry<Boolean, String> validateUser(final String id, final Role userRole,
-			final Department department) {
-		String dept, role, value;
-		// string length !=9
-		if (id.length() != 9)
+	public static SimpleEntry<Boolean, String> validateUser(final String id, final Role userRole, final City city) {
+		String c, role, value;
+		if (id.length() != 8)
 			return new SimpleEntry<Boolean, String>(false, "Seems to be an invalid id(length not equal to 9).");
 
-		dept = id.substring(0, 4).toUpperCase();
-		role = id.substring(4, 5).toUpperCase();
-		value = id.substring(5);
+		c = id.substring(0, 3).toUpperCase();
+		role = id.substring(3, 4).toUpperCase();
+		value = id.substring(4);
 
-		// validate department
-		if (!departmentMatch(dept))
-			return new SimpleEntry<Boolean, String>(false, "The department('" + dept + "') isn't recognized.");
-		else if (department != null && department != Department.valueOf(dept))
-			return new SimpleEntry<Boolean, String>(false,
-					"You are not authorized for this department('" + dept + "').");
+		// validate City
+		if (!cityMatch(c))
+			return new SimpleEntry<Boolean, String>(false, "The City('" + c + "') isn't recognized.");
+		else if (city != null && city != City.valueOf(c))
+			return new SimpleEntry<Boolean, String>(false, "You are not authorized for this city('" + c + "').");
 		else if (!roleMatch(role))
 			return new SimpleEntry<Boolean, String>(false, "The role('" + role + "') isn't correct.");
 		else if (role != null && userRole != Role.fromString(role)) {
-			return new SimpleEntry<Boolean, String>(false, "This operation is invalid for an advisor('" + role + "').");
+			return new SimpleEntry<Boolean, String>(false, "This operation is invalid for a Manager('" + role + "').");
 		}
 
 		try {
@@ -63,50 +39,44 @@ public class Utils {
 	}
 
 	/**
-	 * Validates a course
+	 * Validates a event
 	 * 
-	 * @param courseId
+	 * @param eventId
 	 * @return
 	 */
-	public static SimpleEntry<Boolean, String> validateCourse(final String courseId) {
-		return validateCourse(courseId, null);
+	public static SimpleEntry<Boolean, String> validateEvent(final String eventId) {
+		return validateEvent(eventId, null);
 
 	}
 
-	public static SimpleEntry<Boolean, String> validateCourse(final String courseId, Department department) {
+	public static SimpleEntry<Boolean, String> validateEvent(final String eventId, City city) {
 
-		if (courseId.length() != 8)
-			return new SimpleEntry<Boolean, String>(false, "Seems to be an invalid course(length not equal to 8).");
-		String dept, value;
+		if (eventId.length() != 10)
+			return new SimpleEntry<Boolean, String>(false, "Seems to be an invalid event(length not equal to 10).");
+		String c, time, value;
 
-		dept = courseId.substring(0, 4).toUpperCase();
-		value = courseId.substring(4);
+		c = eventId.substring(0, 3).toUpperCase();
+		time = eventId.substring(3, 4).toUpperCase();
+		value = eventId.substring(4);
 
-		if (!Utils.departmentMatch(dept))
-			return new SimpleEntry<Boolean, String>(false, "The department('" + dept + "') isn't recognized.");
-		else if (department != null && department != Department.valueOf(dept))
-			return new SimpleEntry<Boolean, String>(false,
-					"You are not authorized for this department('" + dept + "').");
+		if (!Utils.cityMatch(c))
+			return new SimpleEntry<Boolean, String>(false, "The city('" + c + "') isn't recognized.");
+		else if (city != null && city != City.valueOf(c))
+			return new SimpleEntry<Boolean, String>(false, "You are not authorized for this city('" + c + "').");
 		try {
 			Integer.parseInt(value);
 		} catch (NumberFormatException nfe) {
-			return new SimpleEntry<Boolean, String>(false, "Course id('" + value + "') isn't valid.");
+			return new SimpleEntry<Boolean, String>(false, "Event id('" + value + "') isn't valid.");
 		}
 
 		return new SimpleEntry<Boolean, String>(true, "valid");
 	}
 
-	/**
-	 * Validates a semester
-	 * 
-	 * @param semester
-	 * @return
-	 */
-	public static SimpleEntry<Boolean, String> validateSemester(String semester) {
-		boolean status = Semester.isValidSemester(semester);
+	public static SimpleEntry<Boolean, String> validateEventType(String eventType) {
+		boolean status = (EventType.isValidEventType(eventType) != null) ? true : false;
 		String msg = null;
 		if (!status)
-			msg = semester + " isn't valid semester.";
+			msg = eventType + " isn't valid eventType.";
 		return new SimpleEntry<Boolean, String>(status, msg);
 	}
 
@@ -153,13 +123,13 @@ public class Utils {
 	}
 
 	/**
-	 * Case insensitive match for department.
+	 * Case insensitive match for City.
 	 * 
 	 * @param dept
 	 * @return true|false
 	 */
-	public static boolean departmentMatch(final String dept) {
-		return dept.matches("(?i)COMP|SOEN|INSE");
+	public static boolean cityMatch(final String c) {
+		return c.matches("(?i)MTL|TOR|OTW");
 	}
 
 	/**
@@ -169,7 +139,6 @@ public class Utils {
 	 * @return true|false
 	 */
 	public static boolean roleMatch(final String role) {
-		return role.matches("(?i)A|S");
+		return role.matches("(?i)M|C");
 	}
-
 }
