@@ -13,8 +13,8 @@ import org.omg.PortableServer.POA;
 import org.omg.PortableServer.POAHelper;
 
 import utils.Config;
-import utils.corbaInterface.IDCRS;
-import utils.corbaInterface.IDCRSHelper;
+import utils.corbaInterface.IDEMS;
+import utils.corbaInterface.IDEMSHelper;
 
 public class FrontEnd {
 
@@ -25,13 +25,13 @@ public class FrontEnd {
 		datagramSocket = new DatagramSocket(Config.getConfig("FRONTEND_PORT"));
 		datagramSocket.setSoTimeout(5000);
 		
-		Thread comp = new Thread(new FrontEndThread(args, "COMP"));
-		Thread soen = new Thread(new FrontEndThread(args, "SOEN"));
-		Thread inse = new Thread(new FrontEndThread(args, "INSE"));
+		Thread MTL = new Thread(new FrontEndThread(args, "MTL"));
+		Thread TOR = new Thread(new FrontEndThread(args, "TOR"));
+		Thread OTW = new Thread(new FrontEndThread(args, "OTW"));
 		
-		comp.start();
-		soen.start();
-		inse.start();
+		MTL.start();
+		TOR.start();
+		OTW.start();
 		
 		System.out.println("FrontEnd initated");
 		
@@ -67,7 +67,7 @@ public class FrontEnd {
 		 
 		    // get object reference from the servant
 		    org.omg.CORBA.Object ref = rootpoa.servant_to_reference(frontEndEngine);
-		    IDCRS href = IDCRSHelper.narrow(ref);
+		    IDEMS href = IDEMSHelper.narrow(ref);
 		 
 		    org.omg.CORBA.Object objRef =  orb.resolve_initial_references("NameService");
 		    NamingContextExt ncRef = NamingContextExtHelper.narrow(objRef);
