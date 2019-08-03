@@ -69,61 +69,61 @@ public class Logger {
 		
 	}
 	
-	public static void addCourse_Successfull(String courseId, String semester, String advisorId) {
-		log("[Add Course] [Successfull] " + courseId + " successfully added to " + semester + " semester, by " + advisorId);
+	public static void addEvent_Successful(String eventId, String eventType, String managerId) {
+		log("[Add Event] [Successfull] " + eventId + " successfully added to " + eventType + " eventType, by " + managerId);
 	}
 	
-	public static void addCourse_Failed(String courseId, String semester, String advisorId) {
-		log("[Add Course] [Failed] " +courseId + " failed to add to " + semester + " semester, by " + advisorId + " as it is already exists");
+	public static void addEvent_Failed(String eventId, String eventType, String managerId) {
+		log("[Add Event] [Failed] " +eventId + " failed to add to " + eventType + " eventType, by " + managerId + " as it is already exists");
 	}
 
-	public static void removeCourse_Failed(String courseId, String semester, String adivsorId) {
-		log("[Remove Course] [Failed] " + courseId + " failed to remove from " + semester + " semester, by " + adivsorId + " as it is doesn't exists");
+	public static void removeEvent_Failed(String eventId, String eventType, String adivsorId) {
+		log("[Remove Event] [Failed] " + eventId + " failed to remove from " + eventType + " eventType, by " + adivsorId + " as it is doesn't exists");
 	}
 
-	public static void removeCourse_Successfull(String courseId, String semester, String adivsorId) {
-		log("[Remove Course] [Successfull] " + courseId + " successfully removed from " + semester + " semester, by " + adivsorId);
+	public static void removeEvent_Successful(String eventId, String eventType, String adivsorId) {
+		log("[Remove Event] [Successfull] " + eventId + " successfully removed from " + eventType + " eventType, by " + adivsorId);
 	}
 	
-	public static void listAvailableCourses(String advisorId, String semester, HashMap<String, Integer> result){
+	public static void listAvailableEvents(String managerId, String eventType, HashMap<String, Integer> result){
 		
-		String temp = "[List Available Courses] [Successfull] " + advisorId + " has requested course availability for " + semester + " semester \n";
+		String temp = "[List Available Events] [Successfull] " + managerId + " has requested Event availability for " + eventType + " eventType \n";
 		
-		for (Entry<String, Integer> course : result.entrySet())
-			temp += course.getKey() + " => " + course.getValue() + ", ";
+		for (Entry<String, Integer> event : result.entrySet())
+			temp += event.getKey() + " => " + event.getValue() + ", ";
 		
 		log(temp);
 	}
 	
-	public static void enrolCourse(String studentId, String courseId, String semester, boolean status, String message) {
+	public static void bookEvent(String customerId, String eventId, String eventType, boolean status, String message) {
 		
 		if(status)
-			log("[Enrol Course] [Successfull] " + studentId + " has enrolled into course " + courseId + " for " + semester + " semester \n");
+			log("[Enrol Event] [Successfull] " + customerId + " has enrolled into Event " + eventId + " for " + eventType + " eventType \n");
 		else
-			log("[Enrol Course] [Failed] " + studentId + " has tried to enrolled into course " + courseId + " for " + semester + " semester failed because of " + message + " \n");
+			log("[Enrol Event] [Failed] " + customerId + " has tried to enrolled into Event " + eventId + " for " + eventType + " eventType failed because of " + message + " \n");
 				
 	}
 	
-	public static void dropCourse(String studentId, String courseId, boolean status) {
+	public static void cancelEvent(String customerId, String eventId, boolean status) {
 		
 		if(status)
-			log("[Drop Course] [Successfull] " + studentId + " has been successfully dropped from course " + courseId + " \n");
+			log("[Cancel Event] [Successfull] " + customerId + " has been successfully Cancelped from Event " + eventId + " \n");
 		else
-			log("[Drop Course] [Failed] " + studentId + " has tried to drop from course " + courseId + " but failed because he isn't enrolled it in any semester \n");
+			log("[Cancel Event] [Failed] " + customerId + " has tried to Cancel from Event " + eventId + " but failed because he isn't enrolled it in any eventType \n");
 
 	}
 	
-	public static void getClassSchedule(String studentId, HashMap<String, ArrayList<String>> result) {
+	public static void getBookingSchedule(String customerId, HashMap<String, ArrayList<String>> result) {
 		
-		String temp = "[Class Schedule] [Successfull] " + studentId + " has requested class schedule \n";
+		String temp = "[Booking Schedule] [Successfull] " + customerId + " has requested booking schedule \n";
 		
 		for (Entry<String, ArrayList<String>> entry : result.entrySet()) {
 			
 			temp += entry.getKey() + ": ";
 			
 			if(entry.getValue().size() > 0) {
-				for (String course: entry.getValue())
-					temp += course + ", ";
+				for (String Event: entry.getValue())
+					temp += Event + ", ";
 			} else
 				temp += "None";
 			
@@ -134,12 +134,12 @@ public class Logger {
 		
 	}
 
-	public static void swapCourse(String studentId, String newCourseId, String oldCourseId, SimpleEntry<Boolean, String> result) {
+	public static void swapEvent(String customerId, String neweventId, String oldeventId, SimpleEntry<Boolean, String> result) {
 				
 		if(result.getKey())
-			log("[Swap Course] [Successfull] " + studentId + " has successfully swapped course from " + oldCourseId + " to " + newCourseId);
+			log("[Swap Event] [Successfull] " + customerId + " has successfully swapped Event from " + oldeventId + " to " + neweventId);
 		else 
-			log("[Swap Course] [Failed] " + studentId + " has requested to swap course from " + oldCourseId + " to " + newCourseId + " but failed because " + result.getValue());
+			log("[Swap Event] [Failed] " + customerId + " has requested to swap Event from " + oldeventId + " to " + neweventId + " but failed because " + result.getValue());
 
 	}
 	

@@ -1,65 +1,54 @@
-/*
-* COMP6231 - Distributed Systems | Fall2018
-* Final Project 
-* Professor - Rajagopalan Jayakumar
-* Software Failure Tolerant and Highly Available Distributed Course Registration System (DCRS)
-*/
 package server.instance3;
 
 import java.io.IOException;
 
 import server.instance3.remoteObject.EnrollmentImpl;
 import server.instance3.remoteObject.EnrollmentInterface;
-import server.instance3.util.Department;
+import server.instance3.util.City;
 import utils.Config;
 
-/**
- * @author Amandeep Singh
- * @see <a href='https://www.linkedin.com/in/imamanrana/' target=
- *      "_blank">Profile</a>
- */
 public class Instance3Server {
 
-	private static EnrollmentInterface compServer;
-	private static EnrollmentInterface soenServer;
-	private static EnrollmentInterface inseServer;
+	private static EnrollmentInterface mtlServer;
+	private static EnrollmentInterface torServer;
+	private static EnrollmentInterface otwServer;
 
 	
 	public static void main(String[] args) throws IOException {
-		getInstance("COMP");
-		getInstance("SOEN");
-		getInstance("INSE");
+		getInstance("MTL");
+		getInstance("TOR");
+		getInstance("OTW");
 		
 		System.out.println("Insance 3 Server initated");
 	}
 	
 	public static EnrollmentInterface getInstance(String serverName) throws IOException {
 
-		if (serverName.equalsIgnoreCase("COMP")) {
+		if (serverName.equalsIgnoreCase("MTL")) {
 
-			if (compServer == null) {
-				compServer = new EnrollmentImpl(Department.COMP.toString(),"COMP_Server.log");
-				startUDPServer(compServer, Config.getConfig("INSTANCE3_COMP_PORT"));
+			if (mtlServer == null) {
+				mtlServer = new EnrollmentImpl(City.MTL.toString(),"MTL_Server.log");
+				startUDPServer(mtlServer, Config.getConfig("INSTANCE3_MTL_PORT"));
 			}
-			return compServer;
+			return mtlServer;
 
-		} else if (serverName.equalsIgnoreCase("SOEN")) {
+		} else if (serverName.equalsIgnoreCase("TOR")) {
 
-			if (soenServer == null) {
-				soenServer = new EnrollmentImpl(Department.SOEN.toString(),"SOEN_Server.log");
-				startUDPServer(soenServer,Config.getConfig("INSTANCE3_SOEN_PORT"));
-			}
-
-			return soenServer;
-
-		} else if (serverName.equalsIgnoreCase("INSE")) {
-
-			if (inseServer == null) {
-				inseServer = new EnrollmentImpl(Department.INSE.toString(),"INSE_Server.log");
-				startUDPServer(inseServer,Config.getConfig("INSTANCE3_INSE_PORT"));
+			if (torServer == null) {
+				torServer = new EnrollmentImpl(City.TOR.toString(),"TOR_Server.log");
+				startUDPServer(torServer,Config.getConfig("INSTANCE3_TOR_PORT"));
 			}
 
-			return inseServer;
+			return torServer;
+
+		} else if (serverName.equalsIgnoreCase("OTW")) {
+
+			if (otwServer == null) {
+				otwServer = new EnrollmentImpl(City.OTW.toString(),"OTW_Server.log");
+				startUDPServer(otwServer,Config.getConfig("INSTANCE3_OTW_PORT"));
+			}
+
+			return otwServer;
 		}
 
 		return null;

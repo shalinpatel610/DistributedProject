@@ -1,21 +1,8 @@
-/*
-* COMP6231 - Distributed Systems | Fall2018
-* Final Project 
-* Professor - Rajagopalan Jayakumar
-* Software Failure Tolerant and Highly Available Distributed Course Registration System (DCRS)
-*/
-package server.instance3.util;
 
-/**
- * Roles Enumeration
- * 
- * @author Amandeep Singh
- * @see <a href="www.linkedin.com/in/imamanrana" target="_blank">Profile</a>
- *
- */
+package server.instance3.util;
 public enum Role {
 
-	STUDENT("S"), ADVISOR("A");
+	CUSTOMER("C"), MANAGER("M");
 
 	private String value;
 
