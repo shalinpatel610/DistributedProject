@@ -1,4 +1,4 @@
-package server.instance3.remoteObject;
+package server.instance2.remoteObject;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;

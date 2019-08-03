@@ -2,9 +2,9 @@ package server.instance2;
 
 import java.io.IOException;
 
-import server.instance3.remoteObject.EnrollmentImpl;
-import server.instance3.remoteObject.EnrollmentInterface;
-import server.instance3.util.City;
+import server.instance2.remoteObject.EnrollmentImpl;
+import server.instance2.remoteObject.EnrollmentInterface;
+import server.instance2.util.City;
 import utils.Config;
 
 public class Instance2Server {

@@ -1,4 +1,4 @@
-package server.instance3.logging;
+package server.instance2.logging;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;

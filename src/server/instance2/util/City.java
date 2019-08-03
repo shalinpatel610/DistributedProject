@@ -1,4 +1,4 @@
-package server.instance3.util;
+package server.instance2.util;
 
 import utils.Config;
 

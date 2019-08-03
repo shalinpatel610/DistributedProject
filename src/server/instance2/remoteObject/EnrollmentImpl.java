@@ -1,4 +1,4 @@
-package server.instance3.remoteObject;
+package server.instance2.remoteObject;
 
 import java.io.File;
 import java.io.IOException;
@@ -17,10 +17,10 @@ import java.util.Map;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.logging.Logger;
 
-import server.instance3.logging.MyLogger;
-import server.instance3.util.City;
-import server.instance3.util.EventType;
-import server.instance3.util.Utils;
+import server.instance2.logging.MyLogger;
+import server.instance2.util.City;
+import server.instance2.util.EventType;
+import server.instance2.util.Utils;
 import utils.Config;
 import utils.Constants;
 import utils.UDPUtilities;
@@ -782,7 +782,7 @@ public class EnrollmentImpl implements EnrollmentInterface {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see server.instance3.remoteObject.EnrollmentInterface#getState()
+	 * @see server.instance2.remoteObject.EnrollmentInterface#getState()
 	 */
 	@Override
 	public byte[] getInternalState() {
@@ -792,7 +792,7 @@ public class EnrollmentImpl implements EnrollmentInterface {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see server.instance3.remoteObject.EnrollmentInterface#setState(byte[])
+	 * @see server.instance2.remoteObject.EnrollmentInterface#setState(byte[])
 	 */
 	@Override
 	public void setState(HashMap<String, HashMap<String, HashMap<String, Object>>> data) {

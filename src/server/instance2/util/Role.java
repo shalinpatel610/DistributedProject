@@ -1,5 +1,5 @@
 
-package server.instance3.util;
+package server.instance2.util;
 public enum Role {
 
 	CUSTOMER("C"), MANAGER("M");
