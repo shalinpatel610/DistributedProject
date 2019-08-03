@@ -10,7 +10,6 @@ import java.util.HashMap;
 import java.util.Map.Entry;
 
 import client.controller.data.Cache;
-import server.instance1.data.Database;
 
 public class Logger {
 	
@@ -23,7 +22,6 @@ public class Logger {
 		if(!isServer) System.out.print("\nResult: ");
 		else {
 			System.out.print(time);
-			System.out.print("[" + Database.getInstance().department + "] ");
 		}
 		
 		System.out.println(logStatement);
@@ -39,17 +37,7 @@ public class Logger {
 		logstatement += "\n";
 		
 		try{
-			if(isServer){
-				File logFile = new File("./Logs/Instance1/ServerLogs/" + Database.getInstance().department + ".txt");
-				logFile.getParentFile().mkdirs();
-				logFile.createNewFile();
-				
-				FileOutputStream logFileOutputStream = new FileOutputStream(logFile, true);
-				logFileOutputStream.write(logstatement.getBytes());
-				logFileOutputStream.close();
-			}
-			
-			else {
+
 				
 				String folder = "../Logs/Instance1/ClientLogs/";
 				
@@ -63,7 +51,6 @@ public class Logger {
 				FileOutputStream logFileOutputStream = new FileOutputStream(logFile, true);
 				logFileOutputStream.write(logstatement.getBytes());
 				logFileOutputStream.close();
-			}
 			
 		} catch (IOException ignored){}
 		

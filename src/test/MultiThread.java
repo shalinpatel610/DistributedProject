@@ -14,8 +14,8 @@ import org.omg.CosNaming.NamingContextPackage.CannotProceed;
 import org.omg.CosNaming.NamingContextPackage.NotFound;
 
 import client.controller.data.Cache;
-import utils.corbaInterface.IDCRS;
-import utils.corbaInterface.IDCRSHelper;
+import utils.corbaInterface.IDEMS;
+import utils.corbaInterface.IDEMSHelper;
 
 
 public class MultiThread {
@@ -30,7 +30,7 @@ public class MultiThread {
 		ORB orb = ORB.init(args, null);
 	    org.omg.CORBA.Object objRef =   orb.resolve_initial_references("NameService");
 	    NamingContextExt ncRef = NamingContextExtHelper.narrow(objRef);
-	    cache.dcrs = (IDCRS) IDCRSHelper.narrow(ncRef.resolve_str(cache.getDepartment()));
+	    cache.dcrs = (IDEMS) IDEMSHelper.narrow(ncRef.resolve_str(cache.getDepartment()));
 	    cache.dcrs.addCourse(cache.id, "COMP6164", "FALL", 2);
 	    cache.dcrs.addCourse(cache.id, "COMP6163", "FALL", 2);
 	    cache.dcrs.addCourse(cache.id, "COMP6164", "WINTER", 2);
