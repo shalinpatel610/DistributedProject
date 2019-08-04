@@ -25,7 +25,7 @@ public class Test {
 		});
 
 		byte[] reply = UDPUtilities.udpCommunication(Config.getStringConfig("INSTANCE" + 3 + "_IP"),
-				Config.getConfig("INSTANCE" + 3 + "_COMP_PORT"), null, Constants.OP_ISALIVE, 1000);
+				Config.getConfig("INSTANCE" + 3 + "_MTL_PORT"), null, Constants.OP_ISALIVE, 1000);
 		System.out.println(" is replica1 instantiated : " + new String(reply));
 
 	}
@@ -43,7 +43,7 @@ public class Test {
 		});
 
 		byte[] reply = UDPUtilities.udpCommunication(Config.getStringConfig("INSTANCE" + 3 + "_IP"),
-				Config.getConfig("INSTANCE" + 3 + "_COMP_PORT"), null, Constants.OP_ISALIVE, 1000);
+				Config.getConfig("INSTANCE" + 3 + "_MTL_PORT"), null, Constants.OP_ISALIVE, 1000);
 		System.out.println(" is replica1 instantiated : " + new String(reply));
 
 	}
