@@ -19,7 +19,7 @@ public class Instance2Server {
 		getInstance("TOR");
 		getInstance("OTW");
 		
-		System.out.println("Insance 3 Server initated");
+		System.out.println("Insance 2 Server initated");
 	}
 	
 	public static EnrollmentInterface getInstance(String serverName) throws IOException {
@@ -28,7 +28,7 @@ public class Instance2Server {
 
 			if (mtlServer == null) {
 				mtlServer = new EnrollmentImpl(City.MTL.toString(),"MTL_Server.log");
-				startUDPServer(mtlServer, Config.getConfig("INSTANCE3_MTL_PORT"));
+				startUDPServer(mtlServer, Config.getConfig("INSTANCE2_MTL_PORT"));
 			}
 			return mtlServer;
 
@@ -36,7 +36,7 @@ public class Instance2Server {
 
 			if (torServer == null) {
 				torServer = new EnrollmentImpl(City.TOR.toString(),"TOR_Server.log");
-				startUDPServer(torServer,Config.getConfig("INSTANCE3_TOR_PORT"));
+				startUDPServer(torServer,Config.getConfig("INSTANCE2_TOR_PORT"));
 			}
 
 			return torServer;
@@ -45,7 +45,7 @@ public class Instance2Server {
 
 			if (otwServer == null) {
 				otwServer = new EnrollmentImpl(City.OTW.toString(),"OTW_Server.log");
-				startUDPServer(otwServer,Config.getConfig("INSTANCE3_OTW_PORT"));
+				startUDPServer(otwServer,Config.getConfig("INSTANCE2_OTW_PORT"));
 			}
 
 			return otwServer;

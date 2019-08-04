@@ -121,7 +121,7 @@ public class TorontoInterface{
     }
 
     
-    public boolean addEvent(String eventID, String eventType, int bookingCapacity){
+    public boolean addEvent(String managerID,String eventID, String eventType, int bookingCapacity){
         if (torDatabase.containsKey(eventType)){
             if (torDatabase.get(eventType).containsKey(eventID)) {
                 torDatabase.get(eventType).get(eventID).setBookingCapacity(torDatabase.get(eventType).get(eventID).getBookingCapacity() + bookingCapacity);

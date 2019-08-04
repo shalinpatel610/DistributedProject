@@ -122,7 +122,7 @@ public class OttawaInterface{
     }
 
     
-    public boolean addEvent(String eventID, String eventType, int bookingCapacity){
+    public boolean addEvent(String managerID,String eventID, String eventType, int bookingCapacity){
         if (otwDatabase.containsKey(eventType)){
             if (otwDatabase.get(eventType).containsKey(eventID)) {
                 otwDatabase.get(eventType).get(eventID).setBookingCapacity(otwDatabase.get(eventType).get(eventID).getBookingCapacity() + bookingCapacity);

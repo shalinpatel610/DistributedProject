@@ -36,9 +36,9 @@ public class OttawaServer {
         DatagramSocket aSocket = null;
         String sendingResult = "";
         try {
-            aSocket = new DatagramSocket(2001);
+            aSocket = new DatagramSocket(2002);
             byte[] buffer = new byte[1000];
-            System.out.println("Ottawa Server Started - 2001");
+            System.out.println("Ottawa Server Started - 2002");
             while (true) {
                 DatagramPacket request = new DatagramPacket(buffer, buffer.length);
                 aSocket.receive(request);

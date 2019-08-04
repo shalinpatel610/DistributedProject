@@ -36,14 +36,16 @@ public class TorontoServer {
         DatagramSocket aSocket = null;
         String sendingResult = "";
         try {
-            aSocket = new DatagramSocket(2002);
+            aSocket = new DatagramSocket(2001);
             byte[] buffer = new byte[1000];
-            System.out.println("Toronto Server Started - 2002");
+            System.out.println("Toronto Server Started - 2001");
             while (true) {
                 DatagramPacket request = new DatagramPacket(buffer, buffer.length);
+                System.out.println(request);
                 aSocket.receive(request);
                 String sentence = new String( request.getData(), 0,
                         request.getLength() );
+                System.out.println(sentence);
                 String[] parts = sentence.split("&");
                 String function = parts[0];
                 String customerID = parts[1];

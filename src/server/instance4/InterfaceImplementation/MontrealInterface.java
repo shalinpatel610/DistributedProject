@@ -120,7 +120,7 @@ public class MontrealInterface {
     }
 
     
-    public boolean addEvent(String eventID, String eventType, int bookingCapacity) {
+    public boolean addEvent(String managerID, String eventID, String eventType, int bookingCapacity) {
         if (mtlDatabase.containsKey(eventType)){
             if (mtlDatabase.get(eventType).containsKey(eventID)) {
                 mtlDatabase.get(eventType).get(eventID).setBookingCapacity(mtlDatabase.get(eventType).get(eventID).getBookingCapacity() + bookingCapacity);

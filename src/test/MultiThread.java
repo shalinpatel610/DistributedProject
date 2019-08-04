@@ -22,7 +22,7 @@ public class MultiThread {
 
 	public static void main(String[] args) throws InvalidName, NotFound, CannotProceed, org.omg.CosNaming.NamingContextPackage.InvalidName {
 
-		Cache cache = Cache.getInstance();
+		/*Cache cache = Cache.getInstance();
 		cache.id = "COMPA1111";
 		if(!cache.checkValidId())
 			return;
@@ -65,6 +65,6 @@ public class MultiThread {
 			
 	  
 	    
+	}*/
 	}
-
 }

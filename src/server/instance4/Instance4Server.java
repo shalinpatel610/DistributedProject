@@ -17,6 +17,7 @@ public class Instance4Server {
 
         try {
 
+
             MontrealServer.main(null);
             OttawaServer.main(null);
             TorontoServer.main(null);

@@ -234,7 +234,7 @@ public class ReplicaManagerEngine implements Runnable {
 		try {
 			switch (server) {
 			case 1:
-				Instance1Server.main(null);
+				//Instance1Server.main(null);
 				break;
 			case 2:
 				Instance2Server.main(null);
@@ -243,7 +243,7 @@ public class ReplicaManagerEngine implements Runnable {
 				Instance3Server.main(null);
 				break;
 			case 4:
-				Instance4Server.main(null);
+				//Instance4Server.main(null);
 				break;
 			}
 		} catch (Exception e) {
