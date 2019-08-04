@@ -1,9 +1,3 @@
-/*
-* COMP6231 - Distributed Systems | Fall2018
-* Final Project 
-* Professor - Rajagopalan Jayakumar
-* Software Failure Tolerant and Highly Available Distributed Course Registration System (DCRS)
-*/
 package test;
 
 import java.util.stream.IntStream;
@@ -12,11 +6,6 @@ import utils.Config;
 import utils.Constants;
 import utils.UDPUtilities;
 
-/**
- * @author Amandeep Singh
- * @see <a href='https://www.linkedin.com/in/imamanrana/' target=
- *      "_blank">Profile</a>
- */
 public class Test {
 
 	public static void main(String[] args) {

@@ -1,10 +1,6 @@
 package test;
 
-
-
 import java.util.AbstractMap.SimpleEntry;
-
-
 import org.omg.CORBA.Any;
 import org.omg.CORBA.ORB;
 import org.omg.CORBA.ORBPackage.InvalidName;
@@ -22,38 +18,38 @@ public class MultiThread {
 
 	public static void main(String[] args) throws InvalidName, NotFound, CannotProceed, org.omg.CosNaming.NamingContextPackage.InvalidName {
 
-		/*Cache cache = Cache.getInstance();
-		cache.id = "COMPA1111";
+		Cache cache = Cache.getInstance();
+		cache.id = "MTLM1234";
 		if(!cache.checkValidId())
 			return;
 	
 		ORB orb = ORB.init(args, null);
 	    org.omg.CORBA.Object objRef =   orb.resolve_initial_references("NameService");
 	    NamingContextExt ncRef = NamingContextExtHelper.narrow(objRef);
-	    cache.dcrs = (IDEMS) IDEMSHelper.narrow(ncRef.resolve_str(cache.getDepartment()));
-	    cache.dcrs.addCourse(cache.id, "COMP6164", "FALL", 2);
-	    cache.dcrs.addCourse(cache.id, "COMP6163", "FALL", 2);
-	    cache.dcrs.addCourse(cache.id, "COMP6164", "WINTER", 2);
-	    cache.dcrs.addCourse(cache.id, "COMP6164", "SUMMER", 2);
+	    cache.dems = (IDEMS) IDEMSHelper.narrow(ncRef.resolve_str(cache.getProvince()));
+	    cache.dems.addEvent(cache.id, "MTLA123456", "SEMINAR", 2);
+	    cache.dems.addEvent(cache.id, "MTLE123456", "SEMINAR", 2);
+	    cache.dems.addEvent(cache.id, "MTLA123456", "CONFERENCES", 2);
+	    cache.dems.addEvent(cache.id, "MTLA123456", "TRADESHOW", 2);
 		Runnable task1 = () -> {
-			Any any = cache.dcrs.enrolCourse("COMPS1111", "COMP6164", "FALL");
+			Any any = cache.dems.bookEvent("MTLC1234", "MTLA123456", "SEMINAR");
 			SimpleEntry<Boolean, String> result = (SimpleEntry<Boolean, String>) any.extract_Value();
 			System.out.println("Enrolment result: " + result);
 		};
 		Runnable task2 = () -> {
-			Any any = cache.dcrs.enrolCourse("COMPS2222", "COMP6164", "FALL");
+			Any any = cache.dems.bookEvent("MTLC2345", "MTLA123456", "SEMINAR");
 			SimpleEntry<Boolean, String> result = (SimpleEntry<Boolean, String>) any.extract_Value();
 			System.out.println("Enrolment result: " + result);
 		};
 
 		Runnable task3 = () -> {
-			Any any = cache.dcrs.enrolCourse("COMPS3333", "COMP6164", "FALL");
+			Any any = cache.dems.bookEvent("MTLC3456", "MTLA123456", "SEMINAR");
 			SimpleEntry<Boolean, String> result = (SimpleEntry<Boolean, String>) any.extract_Value();
 			System.out.println("Enrolment result: " + result);
 		};
 
 		Runnable task4 = () -> {
-			Any any = cache.dcrs.swapCourse("COMPS3333", "COMP6164", "COMP6163");
+			Any any = cache.dems.swapEvent("MTLC3456", "MTLA123456", "MTLE123456", "SEMINAR", "SEMINAR");
 			SimpleEntry<Boolean, String> result = (SimpleEntry<Boolean, String>) any.extract_Value();
 			System.out.println("Swapcourse result: " + result);
 		};
@@ -65,6 +61,5 @@ public class MultiThread {
 			
 	  
 	    
-	}*/
 	}
 }
