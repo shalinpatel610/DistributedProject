@@ -2,77 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0c11d6b2-d5ec-4e44-84bc-96838d38a3a9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/instance1/logging/MyFormatter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/instance1/logging/MyLogger.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/instance1/remoteObject/EnrollmentImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/instance1/remoteObject/EnrollmentInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/instance1/util/City.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/instance1/util/EventType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/instance1/util/Role.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/instance1/util/Utils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/instance1_1/Instance1Server.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/instance4/logging/MyFormatter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/instance4/logging/MyLogger.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/instance4/remoteObject/EnrollmentImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/instance4/remoteObject/EnrollmentInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/instance4/util/City.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/instance4/util/EventType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/instance4/util/Role.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/instance4/util/Utils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/instance4_1/Instance4Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DistributedProject/server/instance4/Logs/MTLLogFile.log.1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DistributedProject/server/instance4/Logs/MTLLogFile.log.2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DistributedProject/server/instance4/Logs/MTLLogFile.log.3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DistributedProject/server/instance4/Logs/OTWLogFile.log.1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DistributedProject/server/instance4/Logs/OTWLogFile.log.2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DistributedProject/server/instance4/Logs/OTWLogFile.log.3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DistributedProject/server/instance4/Logs/TORLogFile.log.1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DistributedProject/server/instance4/Logs/TORLogFile.log.2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DistributedProject/server/instance4/Logs/TORLogFile.log.3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/frontEnd/FrontEndEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontEnd/FrontEndEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/frontEnd/FrontEndUtitlies.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontEnd/FrontEndUtitlies.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/replicaManager/ReplicaManagerEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/replicaManager/ReplicaManagerEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sequencer/Sequencer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sequencer/Sequencer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/instance1/Instance1Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/instance1/Instance1Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/instance1/InterfaceImplementation/MontrealInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/instance1_1/InterfaceImplementation/MontrealInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/instance1/InterfaceImplementation/OttawaInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/instance1_1/InterfaceImplementation/OttawaInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/instance1/InterfaceImplementation/TorontoInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/instance1_1/InterfaceImplementation/TorontoInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/instance1/Model/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/instance1_1/Model/Event.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/instance1/Server/MontrealServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/instance1_1/Server/MontrealServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/instance1/Server/OttawaServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/instance1_1/Server/OttawaServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/instance1/Server/TorontoServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/instance1_1/Server/TorontoServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/instance2/Instance2Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/instance2/Instance2Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/instance2/remoteObject/EnrollmentImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/instance2/remoteObject/EnrollmentImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/instance2/remoteObject/EnrollmentInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/instance2/remoteObject/EnrollmentInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/instance2/util/City.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/instance2/util/City.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/instance2/util/EventType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/instance2/util/EventType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/instance2/util/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/instance2/util/Role.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/instance2/util/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/instance2/util/Utils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/instance3/remoteObject/EnrollmentImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/instance3/remoteObject/EnrollmentImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/instance3/remoteObject/EnrollmentInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/instance3/remoteObject/EnrollmentInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/instance4/Instance4Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/instance4/Instance4Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/instance4/InterfaceImplementation/MontrealInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/instance4_1/InterfaceImplementation/MontrealInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/instance4/InterfaceImplementation/OttawaInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/instance4_1/InterfaceImplementation/OttawaInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/instance4/InterfaceImplementation/TorontoInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/instance4_1/InterfaceImplementation/TorontoInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/instance4/Logs/MTLLogFile.log.1" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/instance4_1/Logs/MTLLogFile.log.1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/instance4/Logs/MTLLogFile.log.2" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/instance4_1/Logs/MTLLogFile.log.2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/instance4/Logs/MTLLogFile.log.3" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/instance4_1/Logs/MTLLogFile.log.3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/instance4/Logs/OTWLogFile.log.1" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/instance4_1/Logs/OTWLogFile.log.1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/instance4/Logs/OTWLogFile.log.2" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/instance4_1/Logs/OTWLogFile.log.2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/instance4/Logs/OTWLogFile.log.3" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/instance4_1/Logs/OTWLogFile.log.3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/instance4/Logs/TORLogFile.log.1" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/instance4_1/Logs/TORLogFile.log.1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/instance4/Logs/TORLogFile.log.2" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/instance4_1/Logs/TORLogFile.log.2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/instance4/Logs/TORLogFile.log.3" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/instance4_1/Logs/TORLogFile.log.3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/instance4/Model/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/instance4_1/Model/Event.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/instance4/Server/MontrealServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/instance4_1/Server/MontrealServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/instance4/Server/OttawaServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/instance4_1/Server/OttawaServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/instance4/Server/TorontoServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/instance4_1/Server/TorontoServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/Logger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/Logger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/instance4_1/Instance4Server.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/instance4_1/InterfaceImplementation/MontrealInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/instance4_1/InterfaceImplementation/OttawaInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/instance4_1/InterfaceImplementation/TorontoInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/instance4_1/Logs/MTLLogFile.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/instance4_1/Logs/MTLLogFile.log.1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/instance4_1/Logs/MTLLogFile.log.2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/instance4_1/Logs/MTLLogFile.log.3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/instance4_1/Logs/OTWLogFile.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/instance4_1/Logs/OTWLogFile.log.1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/instance4_1/Logs/OTWLogFile.log.2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/instance4_1/Logs/OTWLogFile.log.3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/instance4_1/Logs/TORLogFile.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/instance4_1/Logs/TORLogFile.log.1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/instance4_1/Logs/TORLogFile.log.2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/instance4_1/Logs/TORLogFile.log.3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/instance4_1/Model/Event.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/instance4_1/Server/MontrealServer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/instance4_1/Server/OttawaServer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/instance4_1/Server/TorontoServer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/corbaInterface/IDEMSOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/corbaInterface/IDEMSOperations.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -80,9 +31,16 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
+  </component>
+  <component name="ProjectId" id="1OyFfNbMxn6yQYRjQ1JEb7jtEYY" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
@@ -94,6 +52,9 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/test" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -127,12 +88,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Instance2Server" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="server.instance2.Instance2Server" />
+    <configuration name="FrontEnd" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="frontEnd.FrontEnd" />
       <module name="DistributedProject" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="server.instance2.*" />
+          <option name="PATTERN" value="frontEnd.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -140,12 +101,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Instance3Server" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="server.instance3.Instance3Server" />
+    <configuration name="Instance2Server" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="server.instance2.Instance2Server" />
       <module name="DistributedProject" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="server.instance3.*" />
+          <option name="PATTERN" value="server.instance2.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -179,60 +140,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
-      <module name="DistributedProject" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="WORKING_DIRECTORY" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
-      <module name="DistributedProject" />
-      <option name="filePath" />
-      <option name="vmParameters" />
-      <option name="alternativeJrePath" />
-      <option name="programParameters" />
-      <option name="passParentEnvs" value="true" />
-      <option name="workingDirectory" />
-      <option name="isAlternativeJrePathEnabled" value="false" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="filePath" />
-      <option name="vmParameters" />
-      <option name="alternativeJrePath" />
-      <option name="programParameters" />
-      <option name="passParentEnvs" value="true" />
-      <option name="workingDirectory" />
-      <option name="isAlternativeJrePathEnabled" value="false" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="WORKING_DIRECTORY" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Client" />
         <item itemvalue="Application.Sequencer" />
         <item itemvalue="Application.ReplicaManager" />
+        <item itemvalue="Application.FrontEnd" />
+        <item itemvalue="Application.Client" />
         <item itemvalue="Application.Instance2Server" />
-        <item itemvalue="Application.Instance3Server" />
       </list>
     </recent_temporary>
   </component>
@@ -261,7 +175,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
