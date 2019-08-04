@@ -27,38 +27,38 @@ public class DEMS {
 
 	private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
-	private City city;
+	private City City;
 	private Lock _lock;
-	private HashMap<String, HashMap<String, HashMap<String, Object>>> cityDatabase;
+	private HashMap<String, HashMap<String, HashMap<String, Object>>> CityDatabase;
 
 	/**
 	 * Constructor for DEMS
 	 * 
-	 * @param city
+	 * @param City
 	 */
 	public DEMS(String city) {
-		city = city.valueOf(city);
-		cityDatabase = new HashMap<>();
+		this.City = City.valueOf(city);
+		CityDatabase = new HashMap<>();
 		_lock = new ReentrantLock(true);
 
 	}
 
 
-	public boolean addEvent(String managerId, String eventId, String eventType, int capacity) {
+	public boolean addEvent(String managerId, String eventId, String eventType, int CAPACITY) {
 		boolean status = false;
 		String msg = "";
 		// locking
 		_lock.lock();
 
-		if (cityDatabase.containsKey(eventType)) {
-			HashMap<String, HashMap<String, Object>> events = cityDatabase.get(eventType);
+		if (CityDatabase.containsKey(eventType)) {
+			HashMap<String, HashMap<String, Object>> events = CityDatabase.get(eventType);
 
 			if (events.containsKey(eventId)) {
 				status = false;
 				msg = "Events already exists for " + eventType + " eventType.";
 			} else {
 				HashMap<String, Object> eventDetails = new HashMap<>();
-				eventDetails.put(Constants.CAPACITY, capacity);
+				eventDetails.put(Constants.CAPACITY, CAPACITY);
 				eventDetails.put(Constants.CUSTOMERS_ENROLLED, 0);
 				eventDetails.put(Constants.CUSTOMER_IDS, new HashSet<String>());
 				events.put(eventId, eventDetails);
@@ -68,14 +68,14 @@ public class DEMS {
 		} else {
 			// eventType is non-existant
 			HashMap<String, Object> eventDetails = new HashMap<>();
-			eventDetails.put(Constants.CAPACITY, capacity);
+			eventDetails.put(Constants.CAPACITY, CAPACITY);
 			eventDetails.put(Constants.CUSTOMERS_ENROLLED, 0);
 			eventDetails.put(Constants.CUSTOMER_IDS, new HashSet<String>());
 			HashMap<String, HashMap<String, Object>> events = new HashMap<>();
 			events.put(eventId, eventDetails);
 
 			// synchronizing the write operation to the in-memory database
-			cityDatabase.put(eventType, events);
+			CityDatabase.put(eventType, events);
 
 			status = true;
 			msg = eventId + " Added.";
@@ -85,7 +85,7 @@ public class DEMS {
 		_lock.unlock();
 
 		LOGGER.info(String.format(Constants.LOG_MSG, Constants.OP_ADD_EVENT,
-				Arrays.asList(managerId, eventId, eventType, capacity), status, msg));
+				Arrays.asList(managerId, eventId, eventType, CAPACITY), status, msg));
 
 		return status;
 	}
@@ -95,8 +95,8 @@ public class DEMS {
 
 		boolean status = false;
 		String msg = "";
-		if (cityDatabase.containsKey(eventType)) {
-			HashMap<String, HashMap<String, Object>> events = cityDatabase.get(eventType);
+		if (CityDatabase.containsKey(eventType)) {
+			HashMap<String, HashMap<String, Object>> events = CityDatabase.get(eventType);
 			// locking
 			_lock.lock();
 			synchronized (events) {
@@ -132,10 +132,10 @@ public class DEMS {
 		result.putAll(listEventAvailabilityForThisServer(eventType));
 
 		// inquire different Citys
-		for (City city : City.values()) {
-			if (city != city) {
+		for (City City : City.values()) {
+			if (City != City) {
 				result.putAll((HashMap<String, Integer>) Utility.byteArrayToObject(
-						udpCommunication(city, eventType, Constants.OP_LIST_EVENT_AVAILABILITY)));
+						udpCommunication(City, eventType, Constants.OP_LIST_EVENT_AVAILABILITY)));
 			}
 		}
 
@@ -149,8 +149,8 @@ public class DEMS {
 	private HashMap<String, Integer> listEventAvailabilityForThisServer(String eventType) {
 		HashMap<String, Integer> result = new HashMap<>();
 		// get events from the current City
-		if (cityDatabase.containsKey(eventType)) {
-			cityDatabase.get(eventType).forEach(
+		if (CityDatabase.containsKey(eventType)) {
+			CityDatabase.get(eventType).forEach(
 					(event, eventDetails) -> result.put(event, (Integer) eventDetails.get(Constants.CAPACITY)
 							- (Integer) eventDetails.get(Constants.CUSTOMERS_ENROLLED)));
 		}
@@ -173,16 +173,16 @@ public class DEMS {
 		List<String> outOfCityevents = new ArrayList<>();
 		customerSchedule.forEach((sem, events) -> {
 			events.forEach((event) -> {
-				City city = City.valueOf(event.substring(0, 4).toUpperCase());
-				if (city == this.city)
+				City c = City.valueOf(event.substring(0, 3).toUpperCase());
+				if (c == this.City)
 					Cityevents.add(event);
 				else
 					outOfCityevents.add(event);
 			});
 		});
-		City eventcity = City.valueOf(eventId.substring(0, 3).toUpperCase());
+		City eventCity = City.valueOf(eventId.substring(0, 3).toUpperCase());
 		// enroll in this City only
-		if (city == eventcity) {
+		if (City == eventCity) {
 
 			// student already taking this event
 			if (Cityevents.contains(eventId)) {
@@ -201,15 +201,15 @@ public class DEMS {
 						+ " out-of-City events.";
 			} else {
 				// enquire respective City
-				for (City city : City.values()) {
-					if (city == eventcity) {
+				for (City City : City.values()) {
+					if (City == eventCity) {
 						HashMap<String, String> data = new HashMap<>();
 						data.put(Constants.CUSTOMER_ID, customerId);
 						data.put(Constants.EVENT_ID, eventId);
 						data.put(Constants.EVENT_TYPE, eventType);
 
 						result = (SimpleEntry<Boolean, String>) Utility.byteArrayToObject(
-								udpCommunication(eventcity, data, Constants.OP_BOOK_EVENT));
+								udpCommunication(eventCity, data, Constants.OP_BOOK_EVENT));
 					}
 				}
 			}
@@ -231,8 +231,8 @@ public class DEMS {
 			String eventType) {
 		boolean status;
 		String msg;
-		if (cityDatabase.containsKey(eventType)) {
-			HashMap<String, HashMap<String, Object>> events = cityDatabase.get(eventType);
+		if (CityDatabase.containsKey(eventType)) {
+			HashMap<String, HashMap<String, Object>> events = CityDatabase.get(eventType);
 
 			if (events.containsKey(eventId)) {
 				HashMap<String, Object> eventDetails = events.get(eventId);
@@ -274,17 +274,17 @@ public class DEMS {
 		schedule.putAll(getBookingScheduleThisServer(customerId));
 
 		// inquire different Citys
-		for (City city : City.values()) {
-			if (city != this.city) {
+		for (City City : City.values()) {
+			if (City != this.City) {
 
-				HashMap<String, ArrayList<String>> citySchedule = (HashMap<String, ArrayList<String>>) Utility
-						.byteArrayToObject(udpCommunication(city, customerId, Constants.OP_GET_BOOKING_SCHEDULE));
+				HashMap<String, ArrayList<String>> CitySchedule = (HashMap<String, ArrayList<String>>) Utility
+						.byteArrayToObject(udpCommunication(City, customerId, Constants.OP_GET_BOOKING_SCHEDULE));
 
-				for (String eventType : citySchedule.keySet()) {
+				for (String eventType : CitySchedule.keySet()) {
 					if (schedule.containsKey(eventType)) {
-						schedule.get(eventType).addAll(citySchedule.get(eventType));
+						schedule.get(eventType).addAll(CitySchedule.get(eventType));
 					} else {
-						schedule.put(eventType, citySchedule.get(eventType));
+						schedule.put(eventType, CitySchedule.get(eventType));
 					}
 				}
 			}
@@ -297,7 +297,7 @@ public class DEMS {
 
 	private HashMap<String, ArrayList<String>> getBookingScheduleThisServer(String customerId) {
 		HashMap<String, ArrayList<String>> schedule = new HashMap<>();
-		cityDatabase.forEach((eventType, events) -> {
+		CityDatabase.forEach((eventType, events) -> {
 			events.forEach((event, details) -> {
 				if (((HashSet<String>) details.get(Constants.CUSTOMER_IDS)).contains(customerId)) {
 					if (schedule.containsKey(eventType)) {
@@ -328,9 +328,9 @@ public class DEMS {
 	 */
 	public boolean cancelEvent(String customerId, String eventId, String eventType) {
 
-		City eventcity = City.valueOf(eventId.substring(0, 3).toUpperCase());
+		City eventCity = City.valueOf(eventId.substring(0, 3).toUpperCase());
 		SimpleEntry<Boolean, String> result;
-		if (city == eventcity) {
+		if (City == eventCity) {
 			result = cancelEventOnThisServer(customerId, eventId);
 		} else {
 			HashMap<String, String> data = new HashMap<>();
@@ -338,7 +338,7 @@ public class DEMS {
 			data.put(Constants.EVENT_ID, eventId);
 			data.put(Constants.EVENT_TYPE, eventType);
 			result = (SimpleEntry<Boolean, String>) Utility
-					.byteArrayToObject(udpCommunication(eventcity, data, Constants.OP_CANCEL_EVENT));
+					.byteArrayToObject(udpCommunication(eventCity, data, Constants.OP_CANCEL_EVENT));
 		}
 
 		// LOGGER.info(String.format(Constants.LOG_MSG, Constants.OP_CANCEL_EVENT,
@@ -348,8 +348,8 @@ public class DEMS {
 
 	private SimpleEntry<Boolean, String> cancelEventOnThisServer(String customerId, String eventId) {
 		final Map<Boolean, String> temp = new HashMap<>();
-		if (cityDatabase.size() > 0) {
-			cityDatabase.forEach((sem, events) -> {
+		if (CityDatabase.size() > 0) {
+			CityDatabase.forEach((sem, events) -> {
 				if (events.containsKey(eventId)) {
 					events.forEach((event, eventDetails) -> {
 						// locking
@@ -402,7 +402,7 @@ public class DEMS {
 		customerSchedule.forEach((et, events) -> {
 			events.forEach((event) -> {
 				City c = City.valueOf(event.substring(0, 3).toUpperCase());
-				if (c == this.city)
+				if (c == this.City)
 					Cityevents.add(event);
 				else
 					outOfCityevents.add(event);
@@ -417,7 +417,7 @@ public class DEMS {
 			// check if the student is already enrolled in neweventId
 			status = false;
 			msg = customerId + " is already enrolled in " + neweventId;
-		} else if (neweventCity != this.city && oldeventCity == this.city && outOfCityevents.size() >= 3) {
+		} else if (neweventCity != this.City && oldeventCity == this.City && outOfCityevents.size() >= 3) {
 			status = false;
 			msg = customerId + " is already enrolled in " + Constants.MAX_CROSS_EVENTS + " out-of-City events.";
 		}
@@ -436,7 +436,7 @@ public class DEMS {
 		// }
 		// }
 
-		if (neweventCity == city) {
+		if (neweventCity == City) {
 			// enrolling in this City, dropping elective or this City event
 			// check if new event is offered or not
 
@@ -477,7 +477,7 @@ public class DEMS {
 			data.put(Constants.CUSTOMER_ID, customerId);
 			data.put(Constants.NEW_EVENT_ID, neweventId);
 			data.put(Constants.OLD_EVENT_ID, oldeventId);
-			data.put(Constants.OLD_EVENT_CITY, city.toString());
+			data.put(Constants.OLD_EVENT_CITY, City.toString());
 			data.put("oldEventType", oldEventType);
 			data.put("newEventType", newEventType);
 
@@ -499,7 +499,7 @@ public class DEMS {
 	public void udpServer() {
 		DatagramSocket socket = null;
 		try {
-			socket = new DatagramSocket(city.getUdpPort());
+			socket = new DatagramSocket(City.getUdpPort());
 			byte[] buffer = new byte[1000];// to stored the received data from the client.
 			// server is always in listening mode.
 			while (true) {
@@ -650,7 +650,7 @@ public class DEMS {
 	}
 
 	private SimpleEntry<Boolean, String> atomicSwapOnCurrentServer(String customerId, String neweventId,
-			String oldeventId, String oldeventcity, String eventType) {
+			String oldeventId, String oldeventCity, String eventType) {
 
 		SimpleEntry<Boolean, String> result;
 		boolean status;
@@ -666,7 +666,7 @@ public class DEMS {
 				data.put(Constants.CUSTOMER_ID, customerId);
 				data.put(Constants.EVENT_ID, oldeventId);
 				result = (SimpleEntry<Boolean, String>) Utility.byteArrayToObject(
-						udpCommunication(City.valueOf(oldeventcity), data, Constants.OP_CANCEL_EVENT));
+						udpCommunication(City.valueOf(oldeventCity), data, Constants.OP_CANCEL_EVENT));
 
 				if (result.getKey()) {
 					result = enrollmentForThisCity(customerId, neweventId, eventType);
@@ -699,8 +699,8 @@ public class DEMS {
 
 		boolean status = true;
 		String msg = "";
-		if (cityDatabase.containsKey(eventType)) {
-			HashMap<String, HashMap<String, Object>> events = cityDatabase.get(eventType);
+		if (CityDatabase.containsKey(eventType)) {
+			HashMap<String, HashMap<String, Object>> events = CityDatabase.get(eventType);
 
 			if (events.containsKey(eventId)) {
 				HashMap<String, Object> eventDetails = events.get(eventId);
@@ -728,14 +728,14 @@ public class DEMS {
 	/**
 	 * Creates and sends the UDP request
 	 * 
-	 * @param city
+	 * @param City
 	 * @param info
 	 * @param method
 	 * @return
 	 */
-	private byte[] udpCommunication(City city, Object info, String method) {
+	private byte[] udpCommunication(City City, Object info, String method) {
 
-		LOGGER.info("Making UDP Socket Call to " + city + " Server for method : " + method);
+		LOGGER.info("Making UDP Socket Call to " + City + " Server for method : " + method);
 
 		// UDP SOCKET CALL AS CLIENT
 		HashMap<String, Object> data = new HashMap<>();
@@ -746,7 +746,7 @@ public class DEMS {
 			datagramSocket = new DatagramSocket();
 			byte[] message = Utility.objectToByteArray(data);
 			InetAddress remoteUdpHost = InetAddress.getByName("localhost");
-			DatagramPacket request = new DatagramPacket(message, message.length, remoteUdpHost, city.getUdpPort());
+			DatagramPacket request = new DatagramPacket(message, message.length, remoteUdpHost, City.getUdpPort());
 			datagramSocket.send(request);
 			byte[] buffer = new byte[65556];
 			DatagramPacket reply = new DatagramPacket(buffer, buffer.length);
@@ -768,23 +768,23 @@ public class DEMS {
 	}
 	
 	public byte[] getInternalState() {
-		return utils.Utility.deepCopyInstance4State(cityDatabase);
+		return utils.Utility.deepCopyInstance4State(CityDatabase);
 	}
 
 	public void setInternalState(byte[] data) {
-		this.cityDatabase = (HashMap<String, HashMap<String, HashMap<String, Object>>>) UDPUtilities
+		this.CityDatabase = (HashMap<String, HashMap<String, HashMap<String, Object>>>) UDPUtilities
 				.byteArrayToObject(data);
 	}
 
 	public byte[] getState() {
-		return utils.Utility.deepCopyInstance3State(cityDatabase);
+		return utils.Utility.deepCopyInstance3State(CityDatabase);
 	}
 
 	/* (non-Javadoc)
 	 * @see server.instance3.remoteObject.EnrollmentInterface#setState(byte[])
 	 */
 	public void setState(HashMap<String, HashMap<String, HashMap<String, Object>>> data) {
-		this.cityDatabase = data;
+		this.CityDatabase = data;
 	}
 	
 }
