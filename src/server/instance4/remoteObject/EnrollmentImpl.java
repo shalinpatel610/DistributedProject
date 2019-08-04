@@ -324,8 +324,8 @@ public class EnrollmentImpl implements EnrollmentInterface {
 					.byteArrayToObject(udpCommunication(eventCity, data, Constants.OP_CANCEL_EVENT));
 		}
 
-		LOGGER.info(String.format(Constants.LOG_MSG, Constants.OP_CANCEL_EVENT, Arrays.asList(customerId, eventId, eventType), result
-				));
+		// LOGGER.info(String.format(Constants.LOG_MSG, Constants.OP_CANCEL_EVENT, Arrays.asList(customerId, eventId, eventType), result
+		// 		));
 		return result;
 	}
 

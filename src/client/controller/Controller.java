@@ -150,7 +150,7 @@ public class Controller {
 		}
 
 		boolean result = Cache.getInstance().dems.cancelEvent(customerId, eventId, eventType);
-		Logger.cancelEvent(customerId, eventId, result);
+		Logger.cancelEvent(customerId, eventId,eventType, result);
 	}
 
 	public static void getBookingSchedule() {
