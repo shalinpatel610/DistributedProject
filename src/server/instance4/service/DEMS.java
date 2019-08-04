@@ -37,7 +37,7 @@ public class DEMS {
 	 * @param city
 	 */
 	public DEMS(String city) {
-		city = City.valueOf(city);
+		city = city.valueOf(city);
 		cityDatabase = new HashMap<>();
 		_lock = new ReentrantLock(true);
 
@@ -440,7 +440,7 @@ public class DEMS {
 			// enrolling in this City, dropping elective or this City event
 			// check if new event is offered or not
 
-			lock.lock(); // Acquire lock
+			_lock.lock(); // Acquire lock
 			result2 = checkEventAvailability(neweventId, newEventType);
 
 			if (result2.getKey()) {

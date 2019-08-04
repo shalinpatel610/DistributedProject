@@ -4,10 +4,9 @@ import utils.Config;
 
 public enum City {
 
-	MTL(Config.getConfig("INSTANCE4_MTL_PORT")), 
-	TOR(Config.getConfig("INSTANCE4_TOR_PORT")), 
-	OTW(Config.getConfig("INSTANCE4_OTW_PORT"));
-	
+	MTL(Config.getConfig("INSTANCE3_MTL_PORT")), TOR(Config.getConfig("INSTANCE3_TOR_PORT")),
+	OTW(Config.getConfig("INSTANCE3_OTW_PORT"));
+
 	int udpPort;
 
 	private City(int udpPort) {
@@ -18,12 +17,11 @@ public enum City {
 		return udpPort;
 	}
 
-	public static boolean cityExist(final String City) {
-		for (City city : City.values()) {
-			if (city.toString().equals(City.toUpperCase()))
+	public static boolean departmentExist(String city) {
+		for (City c : City.values()) {
+			if (c.toString().equals(city.toUpperCase()))
 				return true;
 		}
 		return false;
 	}
-
 }
