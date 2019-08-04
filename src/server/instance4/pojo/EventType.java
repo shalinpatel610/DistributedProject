@@ -1,5 +1,4 @@
-package server.instance4.util;
-
+package server.instance4.pojo;
 
 public enum EventType {
 

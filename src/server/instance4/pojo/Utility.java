@@ -1,11 +1,15 @@
-package server.instance4.util;
+package server.instance4.pojo;
 
-import java.io.*;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.AbstractMap.SimpleEntry;
 
-public class Utils {
+public class Utility {
 
-	public static SimpleEntry<Boolean, String> validateUser(final String id, final Role userRole, final City city) {
+	public static SimpleEntry<Boolean, String> validateUser(final String id, final UserType userRole, final City city) {
 		String c, role, value;
 		if (id.length() != 8)
 			return new SimpleEntry<Boolean, String>(false, "Seems to be an invalid id(length not equal to 9).");
@@ -21,7 +25,7 @@ public class Utils {
 			return new SimpleEntry<Boolean, String>(false, "You are not authorized for this city('" + c + "').");
 		else if (!roleMatch(role))
 			return new SimpleEntry<Boolean, String>(false, "The role('" + role + "') isn't correct.");
-		else if (role != null && userRole != Role.fromString(role)) {
+		else if (role != null && userRole != UserType.fromString(role)) {
 			return new SimpleEntry<Boolean, String>(false, "This operation is invalid for a Manager('" + role + "').");
 		}
 
@@ -36,7 +40,7 @@ public class Utils {
 
 	/**
 	 * Validates a event
-	 *
+	 * 
 	 * @param eventId
 	 * @return
 	 */
@@ -55,7 +59,7 @@ public class Utils {
 		time = eventId.substring(3, 4).toUpperCase();
 		value = eventId.substring(4);
 
-		if (!Utils.cityMatch(c))
+		if (!Utility.cityMatch(c))
 			return new SimpleEntry<Boolean, String>(false, "The city('" + c + "') isn't recognized.");
 		else if (city != null && city != City.valueOf(c))
 			return new SimpleEntry<Boolean, String>(false, "You are not authorized for this city('" + c + "').");

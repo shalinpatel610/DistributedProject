@@ -1,12 +1,12 @@
+package server.instance4.pojo;
 
-package server.instance4.util;
-public enum Role {
+public enum UserType {
 
 	CUSTOMER("C"), MANAGER("M");
 
 	private String value;
 
-	Role(final String value) {
+	UserType(final String value) {
 		this.value = value;
 	}
 
@@ -20,12 +20,13 @@ public enum Role {
 		return value;
 	}
 
-	public static Role fromString(String text) {
-		for (Role b : Role.values()) {
+	public static UserType fromString(String text) {
+		for (UserType b : UserType.values()) {
 			if (b.value.equalsIgnoreCase(text)) {
 				return b;
 			}
 		}
 		throw new IllegalArgumentException(text);
 	}
+
 }

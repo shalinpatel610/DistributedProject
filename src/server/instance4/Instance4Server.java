@@ -1,65 +1,45 @@
 package server.instance4;
 
-import server.instance4.remoteObject.EnrollmentImpl;
-import server.instance4.remoteObject.EnrollmentInterface;
-import server.instance4.util.City;
-import utils.Config;
-
+import java.io.File;
 import java.io.IOException;
+
+import server.instance4.logging.CustomLogger;
+import utils.Constants;
+import server.instance4.service.DEMS;
 
 public class Instance4Server {
 
-	private static EnrollmentInterface mtlServer;
-	private static EnrollmentInterface torServer;
-	private static EnrollmentInterface otwServer;
+	public static void main(String[] args) {
 
-	
-	public static void main(String[] args) throws IOException {
-		getInstance("MTL");
-		getInstance("TOR");
-		getInstance("OTW");
-		
-		System.out.println("Insance 2 Server initated");
-	}
-	
-	public static EnrollmentInterface getInstance(String serverName) throws IOException {
+		try {
+			
+			setupLogging("MTLServer");			
+			setupLogging("TORServer");
+			setupLogging("OTWServer");
+			
+			new Thread(() -> { (new DEMS("MTL")).udpServer(); }).start();
+			new Thread(() -> { (new DEMS("TOR")).udpServer(); }).start();
+			new Thread(() -> { (new DEMS("OTW")).udpServer(); }).start();
 
-		if (serverName.equalsIgnoreCase("MTL")) {
-
-			if (mtlServer == null) {
-				mtlServer = new EnrollmentImpl(City.MTL.toString(),"MTL_Server.log");
-				startUDPServer(mtlServer, Config.getConfig("INSTANCE4_MTL_PORT"));
-			}
-			return mtlServer;
-
-		} else if (serverName.equalsIgnoreCase("TOR")) {
-
-			if (torServer == null) {
-				torServer = new EnrollmentImpl(City.TOR.toString(),"TOR_Server.log");
-				startUDPServer(torServer,Config.getConfig("INSTANCE4_TOR_PORT"));
-			}
-
-			return torServer;
-
-		} else if (serverName.equalsIgnoreCase("OTW")) {
-
-			if (otwServer == null) {
-				otwServer = new EnrollmentImpl(City.OTW.toString(),"OTW_Server.log");
-				startUDPServer(otwServer,Config.getConfig("INSTANCE4_OTW_PORT"));
-			}
-
-			return otwServer;
+			System.out.println("Insance 4 Server initated");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 
-		return null;
 	}
 
-	private static void startUDPServer(EnrollmentInterface instance, int portNo) {
-		// start the department's UDP server for inter-department communication
-		// the UDP server is started on a new thread
-		new Thread(() -> {
-			((EnrollmentImpl) instance).UDPServer(portNo);
-		}).start();
+	private static void setupLogging(String serverName) throws IOException {
+
+		File files = new File(String.format(Constants.SERVER_LOG_DIRECTORY,"Instance4"));
+		if (!files.exists())
+			files.mkdirs();
+
+		files = new File(String.format(Constants.SERVER_LOG_DIRECTORY,"Instance4") + serverName+".log");
+		if (!files.exists())
+			files.createNewFile();
+
+		CustomLogger.setUpLogger(files.getAbsolutePath());
 	}
 
 }
