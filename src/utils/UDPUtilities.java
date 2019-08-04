@@ -44,6 +44,7 @@ public class UDPUtilities {
 			  ByteArrayInputStream byteIn = new ByteArrayInputStream(data);
 			  ObjectInputStream in = new ObjectInputStream(byteIn);
 			  Object result = (Object) in.readObject();
+			  System.out.println(result.toString());
 			  return result;
 			  
 		  } catch (IOException | ClassNotFoundException e) {

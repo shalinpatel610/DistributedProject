@@ -91,7 +91,7 @@ public class Logger {
 				
 	}
 	
-	public static void cancelEvent(String customerId, String eventId, boolean status) {
+	public static void cancelEvent(String customerId, String eventId, String eventType,boolean status) {
 		
 		if(status)
 			log("[Cancel Event] [Successfull] " + customerId + " has been successfully Cancelped from Event " + eventId + " \n");

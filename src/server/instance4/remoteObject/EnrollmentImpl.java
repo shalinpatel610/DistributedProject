@@ -319,11 +319,12 @@ public class EnrollmentImpl implements EnrollmentInterface {
 			HashMap<String, String> data = new HashMap<>();
 			data.put(Constants.CUSTOMER_ID, customerId);
 			data.put(Constants.EVENT_ID, eventId);
+			data.put(Constants.EVENT_TYPE, eventType);
 			result = (boolean) Utils
 					.byteArrayToObject(udpCommunication(eventCity, data, Constants.OP_CANCEL_EVENT));
 		}
 
-		LOGGER.info(String.format(Constants.LOG_MSG, Constants.OP_CANCEL_EVENT, Arrays.asList(customerId, eventId), result
+		LOGGER.info(String.format(Constants.LOG_MSG, Constants.OP_CANCEL_EVENT, Arrays.asList(customerId, eventId, eventType), result
 				));
 		return result;
 	}
