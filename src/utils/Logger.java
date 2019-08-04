@@ -121,7 +121,7 @@ public class Logger {
 		
 	}
 
-	public static void swapEvent(String customerId, String neweventId, String oldeventId, SimpleEntry<Boolean, String> result) {
+	public static void swapEvent(String customerId, String neweventId, String oldeventId, String newEventType, String oldEventType, SimpleEntry<Boolean, String> result) {
 				
 		if(result.getKey())
 			log("[Swap Event] [Successfull] " + customerId + " has successfully swapped Event from " + oldeventId + " to " + neweventId);

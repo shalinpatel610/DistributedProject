@@ -94,7 +94,7 @@ public class ReplicaManagerEngine implements Runnable {
 		HashMap<String, Object> request = (HashMap<String, Object>) Utils.byteArrayToObject(data);
 
 		for (String key : request.keySet()) {
-
+			System.out.println("Received UDP Socket call for method[" + key + "] with parameters[" + request.get(key) + "]");
 			LOGGER.info("Received UDP Socket call for method[" + key + "] with parameters[" + request.get(key) + "]");
 			switch (key) {
 
@@ -193,7 +193,7 @@ public class ReplicaManagerEngine implements Runnable {
 			byte[] reply = null;
 			try {
 				reply = UDPUtilities.udpCommunication(Config.getStringConfig("RM" + i + "_IP"),
-						Config.getConfig("RM" + i + "_PORT"), null, Constants.OP_ISALIVE, 0); // TODO change timeout
+						Config.getConfig("RM" + i + "_PORT"), null, Constants.OP_ISALIVE, 5000); // TODO change timeout
 			} catch (Exception ignored) {
 			}
 
@@ -209,7 +209,7 @@ public class ReplicaManagerEngine implements Runnable {
 		byte[] reply;
 
 		reply = UDPUtilities.udpCommunication(Config.getStringConfig("INSTANCE" + instanceNo + "_IP"),
-				Config.getConfig("INSTANCE" + instanceNo + "_MTL_PORT"), null, Constants.OP_ISALIVE, 1000); // TODO
+				Config.getConfig("INSTANCE" + instanceNo + "_MTL_PORT"), null, Constants.OP_ISALIVE, 5000); // TODO
 																												// change
 																												// timeout
 
@@ -234,7 +234,7 @@ public class ReplicaManagerEngine implements Runnable {
 		try {
 			switch (server) {
 			case 1:
-				//Instance1Server.main(null);
+				Instance1Server.main(null);
 				break;
 			case 2:
 				Instance2Server.main(null);
@@ -243,7 +243,7 @@ public class ReplicaManagerEngine implements Runnable {
 				Instance3Server.main(null);
 				break;
 			case 4:
-				//Instance4Server.main(null);
+				Instance4Server.main(null);
 				break;
 			}
 		} catch (Exception e) {

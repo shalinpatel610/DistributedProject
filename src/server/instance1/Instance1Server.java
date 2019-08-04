@@ -1,36 +1,65 @@
 package server.instance1;
 
-import server.instance1.InterfaceImplementation.MontrealInterface;
-import server.instance1.InterfaceImplementation.OttawaInterface;
-import server.instance1.InterfaceImplementation.TorontoInterface;
-import server.instance1.Server.MontrealServer;
-import server.instance1.Server.OttawaServer;
-import server.instance1.Server.TorontoServer;
+import server.instance1.remoteObject.EnrollmentImpl;
+import server.instance1.remoteObject.EnrollmentInterface;
+import server.instance1.util.City;
+import utils.Config;
+
+import java.io.IOException;
 
 public class Instance1Server {
 
-    public static MontrealInterface montrealInterface;
-    public static OttawaInterface ottawaInterface;
-    public static TorontoInterface torontoInterface;
+	private static EnrollmentInterface mtlServer;
+	private static EnrollmentInterface torServer;
+	private static EnrollmentInterface otwServer;
 
-    public static void main(String[] args) {
+	
+	public static void main(String[] args) throws IOException {
+		getInstance("MTL");
+		getInstance("TOR");
+		getInstance("OTW");
+		
+		System.out.println("Insance 2 Server initated");
+	}
+	
+	public static EnrollmentInterface getInstance(String serverName) throws IOException {
 
-        try {
+		if (serverName.equalsIgnoreCase("MTL")) {
 
-            MontrealServer.main(null);
-            OttawaServer.main(null);
-            TorontoServer.main(null);
+			if (mtlServer == null) {
+				mtlServer = new EnrollmentImpl(City.MTL.toString(),"MTL_Server.log");
+				startUDPServer(mtlServer, Config.getConfig("INSTANCE1_MTL_PORT"));
+			}
+			return mtlServer;
 
-            //new Thread(() -> { (new MontrealServer()).receive(montrealInterface); }).start();
-            //new Thread(() -> { (new OttawaServer()).receive(ottawaInterface); }).start();
-            //new Thread(() -> { (new TorontoServer()).receive(torontoInterface); }).start();
+		} else if (serverName.equalsIgnoreCase("TOR")) {
 
-            System.out.println("Insance 4 Server initated");
+			if (torServer == null) {
+				torServer = new EnrollmentImpl(City.TOR.toString(),"TOR_Server.log");
+				startUDPServer(torServer,Config.getConfig("INSTANCE1_TOR_PORT"));
+			}
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+			return torServer;
 
-    }
+		} else if (serverName.equalsIgnoreCase("OTW")) {
+
+			if (otwServer == null) {
+				otwServer = new EnrollmentImpl(City.OTW.toString(),"OTW_Server.log");
+				startUDPServer(otwServer,Config.getConfig("INSTANCE1_OTW_PORT"));
+			}
+
+			return otwServer;
+		}
+
+		return null;
+	}
+
+	private static void startUDPServer(EnrollmentInterface instance, int portNo) {
+		// start the department's UDP server for inter-department communication
+		// the UDP server is started on a new thread
+		new Thread(() -> {
+			((EnrollmentImpl) instance).UDPServer(portNo);
+		}).start();
+	}
 
 }

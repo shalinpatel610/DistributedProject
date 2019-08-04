@@ -19,7 +19,6 @@ import java.util.logging.Logger;
 
 import server.instance2.logging.MyLogger;
 import server.instance2.util.City;
-import server.instance2.util.EventType;
 import server.instance2.util.Utils;
 import utils.Config;
 import utils.Constants;
@@ -271,6 +270,8 @@ public class EnrollmentImpl implements EnrollmentInterface {
 	}
 
 	public HashMap<String, ArrayList<String>> getBookingSchedule(String customerId) throws RemoteException {
+		System.out.println("Reached here");
+		LOGGER.info("Reached Here");
 		HashMap<String, ArrayList<String>> schedule = new HashMap<>();
 		schedule.putAll(getEventScheduleThisServer(customerId));
 
@@ -312,11 +313,12 @@ public class EnrollmentImpl implements EnrollmentInterface {
 				}
 			});
 		});
+		System.out.println("Schedule this server: " + schedule.toString());
 		return schedule;
 	}
 
 
-	public boolean cancelEvent(String customerId, String eventId) throws RemoteException {
+	public boolean cancelEvent(String customerId, String eventId, String eventType) throws RemoteException {
 
 		City eventCity = City.valueOf(eventId.substring(0, 3).toUpperCase());
 		boolean result;
@@ -438,7 +440,7 @@ public class EnrollmentImpl implements EnrollmentInterface {
 
 			if (result2.getKey()) {
 				// drop other City event
-				boolean temp = cancelEvent(customerId, oldeventId);
+				boolean temp = cancelEvent(customerId, oldeventId, oldEventType);
 
 				if (temp) {
 					result2 = enrollmentForThisCity(customerId, neweventId, newEventType);
@@ -570,7 +572,7 @@ public class EnrollmentImpl implements EnrollmentInterface {
 				break;
 
 			case Constants.OP_CANCEL_EVENT:
-				response = UDPUtilities.objectToByteArray(cancelEvent(request[1], request[2]));
+				response = UDPUtilities.objectToByteArray(cancelEvent(request[1], request[2], request[3]));
 				break;
 
 			case Constants.OP_SWAP_EVENT:

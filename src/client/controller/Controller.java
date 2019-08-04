@@ -46,9 +46,9 @@ public class Controller {
 		System.out.print("Customer Id: ");
 		String customerId = new Scanner(System.in).nextLine().toUpperCase();
 		
-		String province = customerId.substring(0, 4);
+		String province = customerId.substring(0, 3);
 		if( !(province.equals("MTL") || province.equals("TOR") || province.equals("OTW"))){
-			System.out.println("\nResult: Invalid Student id (Department) \n");
+			System.out.println("\nResult: Invalid Customer id (Department) \n");
 			return null;
 			
 		} else if(!customerId.substring(3, 4).equals("C")) {
@@ -56,7 +56,7 @@ public class Controller {
 			return null;
 			
 		} else if(customerId.length() != 8) {
-			System.out.println("\nResult: Invalid Student id (Number) \n");
+			System.out.println("\nResult: Invalid Customer id (Number) \n");
 			return null;
 		}
 		
@@ -119,16 +119,16 @@ public class Controller {
 		String eventId = readEventId();
 		if(eventId == null) return;
 		
-		String studentId = Cache.getInstance().id;
+		String CustomerId = Cache.getInstance().id;
 		
 		if(Cache.getInstance().getClientType() == Cache.ClientType.MANAGER){
-			studentId = readCustomerId();
-			if(studentId == null) return;
+			CustomerId = readCustomerId();
+			if(CustomerId == null) return;
 		}
 		
-		Any any = Cache.getInstance().dems.bookEvent(studentId, eventId, eventType);
+		Any any = Cache.getInstance().dems.bookEvent(CustomerId, eventId, eventType);
 		SimpleEntry<Boolean, String> result = (SimpleEntry<Boolean, String>) any.extract_Value();
-		Logger.bookEvent(studentId, eventId, eventType, result.getKey(), result.getValue().replaceAll("_", " "));
+		Logger.bookEvent(CustomerId, eventId, eventType, result.getKey(), result.getValue().replaceAll("_", " "));
 		
 	}
 	
@@ -139,6 +139,8 @@ public class Controller {
 
 		String eventType = readEventType();
 		if(eventType == null) return;
+
+
 
 		String customerId = Cache.getInstance().id;
 		
@@ -193,7 +195,7 @@ public class Controller {
 		Any any = Cache.getInstance().dems.swapEvent(customerId, newEventId, oldEventId, newEventType, oldEventType);
 		SimpleEntry<Boolean, String> result = (SimpleEntry<Boolean, String>) any.extract_Value();
 		
-		Logger.swapEvent(customerId, newEventId, oldEventId, result);
+		Logger.swapEvent(customerId, newEventId, oldEventId, newEventType, oldEventType, result);
 		
 	}
 

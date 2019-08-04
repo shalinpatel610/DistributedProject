@@ -115,7 +115,7 @@ public class FrontEndEngine extends IDEMSPOA {
 
 	@Override
 	public boolean cancelEvent(String customerId, String eventId, String eventType) {
-		
+		System.out.println(" " + customerId + eventId + eventType );
 		StringJoiner joiner = new StringJoiner("&")
 				.add(server)
 				.add("cancelEvent")

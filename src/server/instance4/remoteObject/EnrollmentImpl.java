@@ -1,4 +1,11 @@
-package server.instance3.remoteObject;
+package server.instance4.remoteObject;
+
+import server.instance4.logging.MyLogger;
+import server.instance4.util.Utils;
+import utils.Config;
+import utils.Constants;
+import utils.UDPUtilities;
+import utils.Utility;
 
 import java.io.File;
 import java.io.IOException;
@@ -8,29 +15,15 @@ import java.net.InetAddress;
 import java.net.SocketException;
 import java.rmi.RemoteException;
 import java.util.AbstractMap.SimpleEntry;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.logging.Logger;
-
-import server.instance3.logging.MyLogger;
-import server.instance3.util.City;
-import server.instance3.util.EventType;
-import server.instance3.util.Utils;
-import utils.Config;
-import utils.Constants;
-import utils.UDPUtilities;
-import utils.Utility;
 
 public class EnrollmentImpl implements EnrollmentInterface {
 
 	private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
-	private City City;
+	private server.instance4.util.City City;
 
 	private ReentrantLock rl;
 
@@ -135,7 +128,7 @@ public class EnrollmentImpl implements EnrollmentInterface {
 		result.putAll(listEventAvailabilityForThisServer(eventType));
 
 		// inquire different Citys
-		for (City c : City.values()) {
+		for (server.instance4.util.City c : City.values()) {
 			if (c != this.City) {
 				result.putAll((HashMap<String, Integer>) Utils
 						.byteArrayToObject(udpCommunication(c, eventType, Constants.OP_LIST_EVENT_AVAILABILITY)));
@@ -176,14 +169,14 @@ public class EnrollmentImpl implements EnrollmentInterface {
 		List<String> outOfCityEvents = new ArrayList<>();
 		customerSchedule.forEach((ET, events) -> {
 			events.forEach((event) -> {
-				City c = City.valueOf(event.substring(0, 3).toUpperCase());
+				server.instance4.util.City c = City.valueOf(event.substring(0, 3).toUpperCase());
 				if (c == this.City)
 					CityEvents.add(event);
 				else
 					outOfCityEvents.add(event);
 			});
 		});
-		City courseCity = City.valueOf(eventId.substring(0, 3).toUpperCase());
+		server.instance4.util.City courseCity = City.valueOf(eventId.substring(0, 3).toUpperCase());
 		// enroll in this City only
 		if (City == courseCity) {
 
@@ -203,7 +196,7 @@ public class EnrollmentImpl implements EnrollmentInterface {
 				msg = customerId + " is already booked in " + Constants.MAX_CROSS_EVENTS + " out-of-City events.";
 			} else {
 				// enquire respective City
-				for (City c : City.values()) {
+				for (server.instance4.util.City c : City.values()) {
 					if (c == courseCity) {
 						HashMap<String, String> data = new HashMap<>();
 						data.put(Constants.CUSTOMER_ID, customerId);
@@ -275,7 +268,7 @@ public class EnrollmentImpl implements EnrollmentInterface {
 		schedule.putAll(getEventScheduleThisServer(customerId));
 
 		// inquire different Citys
-		for (City c : City.values()) {
+		for (server.instance4.util.City c : City.values()) {
 			if (c != this.City) {
 
 				HashMap<String, ArrayList<String>> citySchedule = (HashMap<String, ArrayList<String>>) Utils
@@ -318,7 +311,7 @@ public class EnrollmentImpl implements EnrollmentInterface {
 
 	public boolean cancelEvent(String customerId, String eventId, String eventType) throws RemoteException {
 
-		City eventCity = City.valueOf(eventId.substring(0, 3).toUpperCase());
+		server.instance4.util.City eventCity = City.valueOf(eventId.substring(0, 3).toUpperCase());
 		boolean result;
 		if (this.City == eventCity) {
 			result = dropEventOnThisServer(customerId, eventId);
@@ -387,14 +380,14 @@ public class EnrollmentImpl implements EnrollmentInterface {
 
 		Map<String, ArrayList<String>> customerSchedule = getBookingSchedule(customerId);
 
-		City oldeventCity = City.valueOf(oldeventId.substring(0, 3).toUpperCase());
-		City neweventCity = City.valueOf(neweventId.substring(0, 3).toUpperCase());
+		server.instance4.util.City oldeventCity = City.valueOf(oldeventId.substring(0, 3).toUpperCase());
+		server.instance4.util.City neweventCity = City.valueOf(neweventId.substring(0, 3).toUpperCase());
 
 		List<String> Cityevents = new ArrayList<>();
 		List<String> outOfCityevents = new ArrayList<>();
 		customerSchedule.forEach((et, events) -> {
 			events.forEach((event) -> {
-				City c = City.valueOf(event.substring(0, 3).toUpperCase());
+				server.instance4.util.City c = City.valueOf(event.substring(0, 3).toUpperCase());
 				if (c == this.City)
 					Cityevents.add(event);
 				else
@@ -745,7 +738,7 @@ public class EnrollmentImpl implements EnrollmentInterface {
 	 * @param method
 	 * @return
 	 */
-	private byte[] udpCommunication(City city, Object info, String method) {
+	private byte[] udpCommunication(server.instance4.util.City city, Object info, String method) {
 
 		LOGGER.info("Making UPD Socket Call to " + city + " Server for method : " + method);
 
@@ -782,7 +775,7 @@ public class EnrollmentImpl implements EnrollmentInterface {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see server.instance3.remoteObject.EnrollmentInterface#getState()
+	 * @see server.instance2.remoteObject.EnrollmentInterface#getState()
 	 */
 	@Override
 	public byte[] getInternalState() {
@@ -792,7 +785,7 @@ public class EnrollmentImpl implements EnrollmentInterface {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see server.instance3.remoteObject.EnrollmentInterface#setState(byte[])
+	 * @see server.instance2.remoteObject.EnrollmentInterface#setState(byte[])
 	 */
 	@Override
 	public void setState(HashMap<String, HashMap<String, HashMap<String, Object>>> data) {

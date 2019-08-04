@@ -1,4 +1,4 @@
-package server.instance3.remoteObject;
+package server.instance4.remoteObject;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
@@ -21,7 +21,7 @@ public interface EnrollmentInterface extends Remote {
 
 	boolean cancelEvent(String customerId, String eventId, String eventType) throws RemoteException;
 	
-	SimpleEntry<Boolean, String> swapEvent(String customerId,String neweventId,String oldeventId, String oldEventType, String newEventType) throws RemoteException;
+	SimpleEntry<Boolean, String> swapEvent(String customerId, String neweventId, String oldeventId, String oldEventType, String newEventType) throws RemoteException;
 	
 	byte[] getInternalState();
 

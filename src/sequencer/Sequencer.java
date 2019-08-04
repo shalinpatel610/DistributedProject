@@ -26,6 +26,7 @@ public class Sequencer extends Thread {
 				System.out.println("Request recieved");
 			
 				String requestMessage = new String(requestPacket.getData(), 0, requestPacket.getLength());
+				System.out.println(requestMessage);
 				SequencerUDPHandler sequencerUDPHandler = new SequencerUDPHandler(sequenceNumber++, requestMessage);
 				sequencerUDPHandler.sendToReplica();
 				System.out.println("Request broadcasted with sequence number: " + (sequenceNumber - 1) + "\n");

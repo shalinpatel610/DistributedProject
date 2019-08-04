@@ -319,7 +319,7 @@ public class FrontEndUtitlies {
 		});
 
 		try {
-			return handler.get(5, TimeUnit.SECONDS);
+			return handler.get(5000, TimeUnit.SECONDS);
 		} catch (InterruptedException | ExecutionException | TimeoutException e) {
 
 			handler.cancel(true);

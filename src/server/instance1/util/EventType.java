@@ -1,4 +1,4 @@
-package server.instance2.util;
+package server.instance1.util;
 
 
 public enum EventType {

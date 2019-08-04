@@ -19,7 +19,7 @@ public interface EnrollmentInterface extends Remote {
 
 	HashMap<String, ArrayList<String>> getBookingSchedule(String customerId) throws RemoteException;
 
-	boolean cancelEvent(String customerId, String eventId) throws RemoteException;
+	boolean cancelEvent(String customerId, String eventId, String eventType) throws RemoteException;
 	
 	SimpleEntry<Boolean, String> swapEvent(String customerId,String neweventId,String oldeventId, String oldEventType, String newEventType) throws RemoteException;
 	

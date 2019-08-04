@@ -48,7 +48,6 @@ public class Client {
 				System.out.println("2. Remove EVENT");
 				System.out.println("3. List EVENT Availability");
 				
-				System.out.println("\nStudent Actions");
 				System.out.println("4. Book an EVENT");
 				System.out.println("5. Get EVENT Schedule");
 				System.out.println("6. Cancel an EVENT");
