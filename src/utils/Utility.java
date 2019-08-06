@@ -19,10 +19,6 @@ public class Utility {
 		return UDPUtilities.objectToByteArray(copy);
 	}
 
-	/**
-	 * @param cityDatabase
-	 * @return
-	 */
 	public static byte[] deepCopyInstance3State(HashMap<String, HashMap<String, HashMap<String, Object>>> cityDatabase) {
 		
 		

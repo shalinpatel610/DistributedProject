@@ -37,11 +37,6 @@ public class EnrollmentImpl implements EnrollmentInterface {
 	// in-memory database
 	private HashMap<String, HashMap<String, HashMap<String, Object>>> cityDatabase;
 
-	/**
-	 * Constructor
-	 * 
-	 * @param city
-	 */
 	public EnrollmentImpl(String city, String logFile) {
 		this.City = City.valueOf(city);
 		cityDatabase = new HashMap<>();
@@ -371,12 +366,6 @@ public class EnrollmentImpl implements EnrollmentInterface {
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see remoteObject.EnrollmentInterface#swapCourse(java.lang.String,
-	 * java.lang.String, java.lang.String)
-	 */
 	public SimpleEntry<Boolean, String> swapEvent(String customerId, String neweventId, String oldeventId,
 			String newEventType, String oldEventType) throws RemoteException {
 		boolean status = true;
@@ -487,9 +476,6 @@ public class EnrollmentImpl implements EnrollmentInterface {
 		return new SimpleEntry<Boolean, String>(status, msg);
 	}
 
-	/**
-	 * UDP Server for Inter-Department communication
-	 */
 	public void UDPServer() {
 		UDPServer(City.getUdpPort());
 	}
@@ -596,12 +582,6 @@ public class EnrollmentImpl implements EnrollmentInterface {
 
 	}
 
-	/**
-	 * Handles the UDP request for information
-	 * 
-	 * @param data
-	 * @return
-	 */
 	@SuppressWarnings(value = { "unchecked" })
 	private byte[] processUDPRequest(byte[] data) {
 
@@ -738,14 +718,6 @@ public class EnrollmentImpl implements EnrollmentInterface {
 		return new SimpleEntry<Boolean, String>(status, msg);
 	}
 
-	/**
-	 * Creates & sends the UDP request
-	 * 
-	 * @param city
-	 * @param info
-	 * @param method
-	 * @return
-	 */
 	private byte[] udpCommunication(City city, Object info, String method) {
 
 		LOGGER.info("Making UPD Socket Call to " + city + " Server for method : " + method);
@@ -780,30 +752,17 @@ public class EnrollmentImpl implements EnrollmentInterface {
 		return response;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see server.instance3.remoteObject.EnrollmentInterface#getState()
-	 */
 	@Override
 	public byte[] getInternalState() {
 		return Utility.deepCopyInstance3State(cityDatabase);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see server.instance3.remoteObject.EnrollmentInterface#setState(byte[])
-	 */
+
 	@Override
 	public void setState(HashMap<String, HashMap<String, HashMap<String, Object>>> data) {
 		this.cityDatabase = data;		
 	}
-	/**
-	 * Logging setup for COMP server
-	 * 
-	 * @throws IOException
-	 */
+
 	private static void setupLogging(String fileName) {
 		try {
 			File files = new File(String.format(Constants.SERVER_LOG_DIRECTORY,"Instance3"));

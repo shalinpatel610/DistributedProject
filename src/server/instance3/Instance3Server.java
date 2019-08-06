@@ -19,7 +19,7 @@ public class Instance3Server {
 		getInstance("TOR");
 		getInstance("OTW");
 		
-		System.out.println("Insance 3 Server initated");
+		System.out.println("Instance 3 Server initiated");
 	}
 	
 	public static EnrollmentInterface getInstance(String serverName) throws IOException {

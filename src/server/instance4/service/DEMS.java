@@ -31,11 +31,6 @@ public class DEMS {
 	private Lock _lock;
 	private HashMap<String, HashMap<String, HashMap<String, Object>>> CityDatabase;
 
-	/**
-	 * Constructor for DEMS
-	 * 
-	 * @param City
-	 */
 	public DEMS(String city) {
 		this.City = City.valueOf(city);
 		CityDatabase = new HashMap<>();
@@ -320,12 +315,6 @@ public class DEMS {
 		return schedule;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see remoteObject.EnrollmentInterfaceOperations#cancelEvent(java.lang.String,
-	 * java.lang.String)
-	 */
 	public boolean cancelEvent(String customerId, String eventId, String eventType) {
 
 		City eventCity = City.valueOf(eventId.substring(0, 3).toUpperCase());
@@ -493,9 +482,7 @@ public class DEMS {
 		return new SimpleEntry<Boolean, String>(status, msg);
 	}
 
-	/**
-	 * UDP Server for Inter-Cityal communication
-	 */
+
 	public void udpServer() {
 		DatagramSocket socket = null;
 		try {
@@ -539,12 +526,7 @@ public class DEMS {
 			return processUDPRequest(request.getData());
 	}
 	
-	/**
-	 * UDP request for information
-	 * 
-	 * @param data
-	 * @return
-	 */
+
 	private byte[] processUDPRequest(byte[] data) {
 		
 		byte[] response = null;
@@ -725,14 +707,6 @@ public class DEMS {
 		return new SimpleEntry<Boolean, String>(status, msg);
 	}
 
-	/**
-	 * Creates and sends the UDP request
-	 * 
-	 * @param City
-	 * @param info
-	 * @param method
-	 * @return
-	 */
 	private byte[] udpCommunication(City City, Object info, String method) {
 
 		LOGGER.info("Making UDP Socket Call to " + City + " Server for method : " + method);
@@ -780,9 +754,6 @@ public class DEMS {
 		return utils.Utility.deepCopyInstance3State(CityDatabase);
 	}
 
-	/* (non-Javadoc)
-	 * @see server.instance3.remoteObject.EnrollmentInterface#setState(byte[])
-	 */
 	public void setState(HashMap<String, HashMap<String, HashMap<String, Object>>> data) {
 		this.CityDatabase = data;
 	}

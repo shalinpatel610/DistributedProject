@@ -38,12 +38,6 @@ public class Utility {
 		return new SimpleEntry<Boolean, String>(true, "valid");
 	}
 
-	/**
-	 * Validates a event
-	 * 
-	 * @param eventId
-	 * @return
-	 */
 	public static SimpleEntry<Boolean, String> validateEvent(final String eventId) {
 		return validateEvent(eventId, null);
 
@@ -80,12 +74,6 @@ public class Utility {
 		return new SimpleEntry<Boolean, String>(status, msg);
 	}
 
-	/**
-	 * Converts from object to byte array
-	 * 
-	 * @param obj
-	 * @return
-	 */
 	public static byte[] objectToByteArray(Object obj) {
 		ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
 		ObjectOutputStream out;
@@ -99,12 +87,6 @@ public class Utility {
 		return byteOut.toByteArray();
 	}
 
-	/**
-	 * converts from byte array to object
-	 * 
-	 * @param data
-	 * @return
-	 */
 	public static Object byteArrayToObject(byte[] data) {
 		ByteArrayInputStream byteIn = new ByteArrayInputStream(data);
 		Object result = null;
@@ -122,22 +104,11 @@ public class Utility {
 		return result;
 	}
 
-	/**
-	 * Case insensitive match for City.
-	 * 
-	 * @param dept
-	 * @return true|false
-	 */
+
 	public static boolean cityMatch(final String c) {
 		return c.matches("(?i)MTL|TOR|OTW");
 	}
 
-	/**
-	 * Case insensitive match for use role.
-	 * 
-	 * @param role
-	 * @return true|false
-	 */
 	public static boolean roleMatch(final String role) {
 		return role.matches("(?i)M|C");
 	}

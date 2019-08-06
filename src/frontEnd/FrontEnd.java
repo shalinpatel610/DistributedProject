@@ -33,7 +33,7 @@ public class FrontEnd {
 		TOR.start();
 		OTW.start();
 		
-		System.out.println("FrontEnd initated");
+		System.out.println("FrontEnd initiated");
 		
 	}
 	

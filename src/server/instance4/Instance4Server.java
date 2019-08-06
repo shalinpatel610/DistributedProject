@@ -21,7 +21,7 @@ public class Instance4Server {
 			new Thread(() -> { (new DEMS("TOR")).udpServer(); }).start();
 			new Thread(() -> { (new DEMS("OTW")).udpServer(); }).start();
 
-			System.out.println("Insance 4 Server initated");
+			System.out.println("Instance 4 Server initiated");
 			
 		} catch (Exception e) {
 			e.printStackTrace();

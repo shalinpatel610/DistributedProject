@@ -19,7 +19,7 @@ public class Instance1Server {
 		getInstance("TOR");
 		getInstance("OTW");
 		
-		System.out.println("Insance 2 Server initated");
+		System.out.println("Instance 2 Server initiated");
 	}
 	
 	public static EnrollmentInterface getInstance(String serverName) throws IOException {
@@ -55,8 +55,6 @@ public class Instance1Server {
 	}
 
 	private static void startUDPServer(EnrollmentInterface instance, int portNo) {
-		// start the department's UDP server for inter-department communication
-		// the UDP server is started on a new thread
 		new Thread(() -> {
 			((EnrollmentImpl) instance).UDPServer(portNo);
 		}).start();

@@ -13,7 +13,7 @@ public class Sequencer extends Thread {
 	public void run() {
 		
 		byte buffer[] = new byte[1000];
-		System.out.println("Sequencer initated");
+		System.out.println("Sequencer initiated");
 		
 		try{
 			
@@ -23,7 +23,7 @@ public class Sequencer extends Thread {
 	
 				DatagramPacket requestPacket= new DatagramPacket(buffer, buffer.length);
 				datagramSocket.receive(requestPacket);				
-				System.out.println("Request recieved");
+				System.out.println("Request received");
 			
 				String requestMessage = new String(requestPacket.getData(), 0, requestPacket.getLength());
 				System.out.println(requestMessage);

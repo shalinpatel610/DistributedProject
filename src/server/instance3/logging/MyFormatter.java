@@ -9,11 +9,6 @@ public class MyFormatter extends Formatter {
 
 	private static final DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss.SSS");
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.util.logging.Formatter#format(java.util.logging.LogRecord)
-	 */
 	@Override
 	public String format(LogRecord record) {
 
