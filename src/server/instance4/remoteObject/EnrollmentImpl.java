@@ -751,7 +751,7 @@ public class EnrollmentImpl implements EnrollmentInterface {
 		try {
 			socket = new DatagramSocket();
 			byte[] message = Utils.objectToByteArray(data);
-			InetAddress remoteUdpHost = InetAddress.getByName("localhost");
+			InetAddress remoteUdpHost = InetAddress.getByName(Config.getStringConfig("INSTANCE" + 4 + "_IP"));
 			DatagramPacket request = new DatagramPacket(message, message.length, remoteUdpHost, city.getUdpPort());
 			socket.send(request);
 			byte[] buffer = new byte[65556];
