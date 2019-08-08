@@ -3,19 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="0c11d6b2-d5ec-4e44-84bc-96838d38a3a9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/frontEnd/FrontEnd.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontEnd/FrontEnd.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sequencer/Sequencer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sequencer/Sequencer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/instance1/Instance1Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/instance1/Instance1Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/instance1/logging/MyFormatter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/instance1/logging/MyFormatter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/instance1/remoteObject/EnrollmentImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/instance1/remoteObject/EnrollmentImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/instance2/Instance2Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/instance2/Instance2Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/instance2/logging/MyFormatter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/instance2/logging/MyFormatter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/instance2/remoteObject/EnrollmentImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/instance2/remoteObject/EnrollmentImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/instance3/logging/MyFormatter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/instance3/logging/MyFormatter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/instance3/remoteObject/EnrollmentImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/instance3/remoteObject/EnrollmentImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/instance4/service/DEMS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/instance4/service/DEMS.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/Utility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/Utility.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.config" beforeDir="false" afterPath="$PROJECT_DIR$/app.config" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DistributedProject/server/instance1_1/Logs/MTLLogFile.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DistributedProject/server/instance1_1/Logs/OTWLogFile.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DistributedProject/server/instance1_1/Logs/TORLogFile.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DistributedProject/server/instance4_1/Logs/MTLLogFile.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DistributedProject/server/instance4_1/Logs/OTWLogFile.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DistributedProject/server/instance4_1/Logs/TORLogFile.log" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -134,10 +128,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Sequencer" />
-        <item itemvalue="Application.ReplicaManager" />
-        <item itemvalue="Application.FrontEnd" />
         <item itemvalue="Application.Client" />
+        <item itemvalue="Application.Sequencer" />
+        <item itemvalue="Application.FrontEnd" />
+        <item itemvalue="Application.ReplicaManager" />
         <item itemvalue="Application.Instance2Server" />
       </list>
     </recent_temporary>
